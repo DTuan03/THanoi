@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  THanoi
+
+  Created by Tuấn on 8/12/24.
+  
+*/
+
+"skipButton" = "Skip";
+"titleGetStartedOnboarding" = "Immerse yourself in the journey, \n find yourself through adventure.";
+"startButton" = "Start";
+"signInLabel" = "Already have an account? Sign In";
+"highLineSignInLabel" = "Sign In";
+
+"titleContinueOnboarding1" = "Work fills your pockets, \n adventure fills your soul.";
+"highLineTitleContinueOnboarding1" = "adventure";
+"descriptionLabel1" = "Traveling in Hanoi is the best way to learn something new, bringing joy and expanding your knowledge.";
+
+"titleContinueOnboarding2" = "Live a life without \n reasons, travel in Hanoi \n with no regrets.";
+"highLineTitleContinueOnboarding2" = "travel";
+"descriptionLabel2" = "Traveling in Hanoi often involves visiting multiple locations throughout the city, not just exploring one place.";
+
+"titleContinueOnboarding3" = "Hanoi within reach. Travel is living fully.";
+"highLineTitleContinueOnboarding3" = "fully";
+"descriptionLabel3" = "Everyone craves to explore the different beauties of nature and meet new people. Hanoi is the destination to make those dreams come true.";
+
+"continueButton" = "Next";
