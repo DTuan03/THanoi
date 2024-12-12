@@ -22,9 +22,14 @@ class GetStartedViewController: UIViewController {
         
         startButton.tintColor = UIColor.color
         
-        let highLightSignIn = NSAttributedString().highLight(text: NSLocalizedString("signInLabel", comment: ""), highLighText: NSLocalizedString("highLineSignInLabel", comment: ""), highLightColor: .color)
+        let highLightSignIn = NSAttributedString().highLightText(fullText: NSLocalizedString("signInLabel", comment: ""), highLighText: NSLocalizedString("highLineSignInLabel", comment: ""), highLightColor: .color)
         signInLabel.attributedText = highLightSignIn
-        
     }
-
+    @IBAction func getStartedAction(_ sender: Any) {
+        let oVC = OnboardingViewController()
+        oVC.modalPresentationStyle = .fullScreen
+        oVC.modalTransitionStyle = .crossDissolve
+        present(oVC, animated: true, completion: nil)
+    }
+    
 }
