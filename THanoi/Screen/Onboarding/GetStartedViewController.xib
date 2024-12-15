@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -52,7 +53,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="buJ-6V-Cb5">
                     <rect key="frame" x="20" y="694" width="400" height="344"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09Q-1L-mWV">
+                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09Q-1L-mWV">
                             <rect key="frame" x="0.0" y="87.333333333333371" width="400" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
@@ -60,10 +61,9 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7S-rA-o9p">
                             <rect key="frame" x="0.0" y="0.0" width="400" height="57.333333333333336"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="filled" title="Button">
-                                <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
-                            </buttonConfiguration>
                             <connections>
                                 <action selector="getStartedAction:" destination="-1" eventType="touchUpInside" id="jMt-P8-LUr"/>
                             </connections>
@@ -83,12 +83,16 @@
                     <rect key="frame" x="20" y="62" width="400" height="38.333333333333343"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZd-Ig-l2a">
-                            <rect key="frame" x="330.66666666666669" y="0.0" width="69.333333333333314" height="31"/>
+                            <rect key="frame" x="318" y="0.0" width="82" height="34.333333333333336"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Button">
+                            <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" title="Button">
+                                <imageReference key="image" image="chevron.right" catalog="system" symbolScale="default"/>
                                 <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="skipAction:" destination="-1" eventType="touchUpInside" id="1Li-8U-72o"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -119,6 +123,7 @@
         </view>
     </objects>
     <resources>
+        <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="getStarted" width="776" height="772"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

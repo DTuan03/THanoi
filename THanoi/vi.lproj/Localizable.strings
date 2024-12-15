@@ -5,13 +5,14 @@
   Created by Tuấn on 8/12/24.
   
 */
-
+//getStartedOnboarding
 "skipButton" = "Bỏ qua";
 "titleGetStartedOnboarding" = "Đắm mình trong hành \n trình, tìm thấy mình \n qua phiêu lưu.";
 "startButton" = "Bắt đầu";
 "signInLabel" = "Bạn đã có tài khoản? Đăng nhập";
 "highLineSignInLabel" = "Đăng nhập";
 
+//continueOnboarding
 "titleContinueOnboarding1" = "Công việc lấp đầy túi bạn, \n phiêu lưu lấp đầy tâm hồn.";
 "highLineTitleContinueOnboarding1" = "phiêu lưu";
 "descriptionLabel1" = "Du lịch Hà Nội là cách tuyệt vời nhất để \n học hỏi điều mới, vừa mang lại niềm vui \n vừa mở rộng kiến thức.";
@@ -25,3 +26,24 @@
 "descriptionLabel3" = " Mỗi người đều khao khát khám phá vẻ \n đẹp khác của thiên nhiên và gặp gỡ \n những con người mới. Hà Nội là điểm \n đến để thực hiện những ước mơ đó.";
 
 "continueButton" = "Tiếp theo";
+
+//signUp
+
+"titleSignUp" = "Bắt đầu thôi";
+"descriptionSignUp" = "Vui lòng điền thông tin và tạo tài khoản";
+"fullName" = "Họ và tên";
+"email" = "Email";
+"passWord" = "Mật khẩu";
+"signUp" = "Đăng ký";
+"orSignIn" = "Hoặc sử dụng đăng nhập ngay lập tức";
+"appleId" = "Đăng nhập bằng Apple ID";
+"google" = "Đăng nhập bằng Google";
+"alreadySignIn" = "Bạn đã có tài khoản? Đăng nhập";
+
+//SignIn
+"titleSignIn" = "Xin chào !";
+"descriptionSignIn" = "Chào mừng đến với THanoi";
+
+"signIn" = "Đăng nhập";
+"notSignUP" = "Bạn chưa có tài khoản? Đăng ký";
+

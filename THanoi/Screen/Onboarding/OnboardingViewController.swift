@@ -17,8 +17,7 @@ class OnboardingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        continueButton.setTitle(NSLocalizedString("continueButton", comment: ""), for: .normal)
-        continueButton.tintColor = UIColor.color
+        continueButton.setUpButton(title: "continueButton")
         pageControl.isEnabled = false
         addContentToScrollView()
     }
@@ -33,7 +32,10 @@ class OnboardingViewController: UIViewController {
             
             scrollView.setContentOffset(CGPoint(x: contentOffset.x, y: 0), animated: true)
         } else {
-//            delegate?.moveToNextCell(in: self)
+            let signUpVC = SignUpViewController()
+            signUpVC.modalTransitionStyle = .crossDissolve
+            signUpVC.modalPresentationStyle = .fullScreen
+            present(signUpVC, animated: true, completion: nil)
         }
     }
     var onboardingModel: [OnboardingModel] = [

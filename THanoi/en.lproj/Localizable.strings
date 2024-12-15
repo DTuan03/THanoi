@@ -25,3 +25,19 @@
 "descriptionLabel3" = "Everyone craves to explore the different beauties of nature and meet new people. Hanoi is the destination to make those dreams come true.";
 
 "continueButton" = "Next";
+
+"titleSignUp" = "Let's get started";
+"descriptionSignUp" = "Please fill in your information and create an account";
+"fullName" = "Full Name";
+"email" = "Email";
+"passWord" = "Password";
+"signUp" = "Sign Up";
+"orSignIn" = "Or sign in instantly";
+"appleId" = "Sign in with Apple ID";
+"google" = "Sign in with Google";
+"alreadySignIn" = "Already have an account? Sign In";
+
+"titleSignIn" = "Hello!";
+"descriptionSignIn" = "Welcome to THanoi";
+"signIn" = "Sign In";
+"notSignUP" = "Don't have an account? Sign Up";

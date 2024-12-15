@@ -17,11 +17,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let gSVC = GetStartedViewController()
+        let defaults = UserDefaults.standard
+        
+        var firstVC: UIViewController = GetStartedViewController()
+        
+        if defaults.bool(forKey: "isOnboarding") {
+            firstVC = SignUpViewController()
+        }
+        
+//        let gSVC = GetStartedViewController()
         
 //        let navigationViewControler = UINavigationController(rootViewController: gSVC)
         
-        window?.rootViewController = gSVC
+        window?.rootViewController = firstVC
         window?.makeKeyAndVisible()
     }
 
