@@ -36,6 +36,9 @@
 "appleId" = "Sign in with Apple ID";
 "google" = "Sign in with Google";
 "alreadySignIn" = "Already have an account? Sign In";
+"isFullName" = "You need to provide your full name";
+"isEmail" = "Invalid email format";
+"isPassword" = "Password must be at least 8 characters, including 1 uppercase letter and 1 number";
 
 "titleSignIn" = "Hello!";
 "descriptionSignIn" = "Welcome to THanoi";
