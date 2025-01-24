@@ -15,6 +15,7 @@ class GetStartedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkOnboarding()
         skipButton.setTitle(NSLocalizedString("skipButton", comment: ""), for: .normal)
 //        chevron.forward
         titleLabel.text = NSLocalizedString("titleGetStartedOnboarding", comment: "")
@@ -31,16 +32,18 @@ class GetStartedViewController: UIViewController {
     }
     
     @objc func signIn() {
-        checkOnboarding()
         //TODO: Chuyen qua man hinh dang nhap
         print("Da chuyen qua man hinh dang nhap")
+        let signInVC = SignInViewController()
+        signInVC.modalTransitionStyle = .crossDissolve
+        signInVC.modalPresentationStyle = .fullScreen
+        present(signInVC, animated: true)
     }
     
     @IBAction func skipAction(_ sender: Any) {
         let signUpVC = SignUpViewController()
         signUpVC.modalTransitionStyle = .crossDissolve
         signUpVC.modalPresentationStyle = .fullScreen
-        checkOnboarding()
         present(signUpVC, animated: true, completion: nil)
     }
     
@@ -49,7 +52,6 @@ class GetStartedViewController: UIViewController {
         let oVC = OnboardingViewController()
         oVC.modalPresentationStyle = .fullScreen
         oVC.modalTransitionStyle = .crossDissolve
-        checkOnboarding()
         present(oVC, animated: true, completion: nil)
     }
     

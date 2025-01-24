@@ -48,5 +48,10 @@
 "descriptionSignIn" = "Chào mừng đến với THanoi";
 
 "signIn" = "Đăng nhập";
-"notSignUP" = "Bạn chưa có tài khoản? Đăng ký";
+"forgotPassWord" = "Quên mật khẩu?";
+"notSignUp" = "Bạn chưa có tài khoản? Đăng ký";
 
+//Home
+"titleHome" = "Bạn muốn khám phá \nđịa điểm nào";
+"hightLineTitleHome" = "khám phá";
+"search" = "Tìm kiếm";

@@ -17,9 +17,11 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var orSignInLabel: UILabel!
     @IBOutlet weak var signInLabel: UILabel!
-    @IBOutlet weak var isFullNameLabel: UILabel!
-    @IBOutlet weak var isEmailLabel: UILabel!
-    @IBOutlet weak var isPasswordLabel: UILabel!
+    @IBOutlet weak var errorFullNameLabel: UILabel!
+    @IBOutlet weak var errorEmailLabel: UILabel!
+    @IBOutlet weak var errorPasswordLabel: UILabel!
+    @IBOutlet weak var signUpWithApple: UIButton!
+    @IBOutlet weak var signUpWithGoogle: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = NSLocalizedString("titleSignUp", comment: "")
@@ -44,45 +46,47 @@ class SignUpViewController: UIViewController {
         signInLabel.text = NSLocalizedString("alreadySignIn", comment: "")
         let highLineSignIn = NSAttributedString().highLightText(fullText: NSLocalizedString("alreadySignIn", comment: ""), highLighText: NSLocalizedString("signIn", comment: ""), highLightColor: .color)
         signInLabel.attributedText = highLineSignIn
-        //TODO: viet thanh extension
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-            view.addGestureRecognizer(tapGesture)
+        signInLabel.isUserInteractionEnabled = true
+        let tapSignInLabel = UITapGestureRecognizer(target: self, action: #selector(signInLabelAction))
+        signInLabel.addGestureRecognizer(tapSignInLabel)
+        addDismissKeyboard()
     }
-    @objc func dismissKeyboard() {
-        view.endEditing(true) // Ẩn bàn phím
+    
+    @objc func signInLabelAction() {
+        let signInVC = SignInViewController()
+        signInVC.modalTransitionStyle = .crossDissolve
+        signInVC.modalPresentationStyle = .fullScreen
+        present(signInVC, animated: true)
     }
+    
     
     @IBAction func signUpAction(_ sender: Any) {
         if let fullName = fullNameTextField.text, !fullName.isEmpty {
             fullNameTextField.layer.borderWidth = 0
-            isFullNameLabel.text = ""
+            errorFullNameLabel.isHidden = true
         } else {
-            showError(textField: fullNameTextField, content: "isFullName", errorLabel: isFullNameLabel)
+            showError(textField: fullNameTextField, content: "isFullName", errorLabel: errorFullNameLabel)
         }
         
         if isValidEmail(emailTextField) {
             emailTextField.layer.borderWidth = 0
-            isEmailLabel.text = ""
+            errorEmailLabel.isHidden = true
         } else {
-            showError(textField: emailTextField, content: "isEmail", errorLabel: isEmailLabel)
+            showError(textField: emailTextField, content: "isEmail", errorLabel: errorEmailLabel)
         }
         
         if isValidPassword(passWordTextField) {
             passWordTextField.layer.borderWidth = 0
-            isPasswordLabel.text = ""
+            errorPasswordLabel.isHidden = true
         } else {
-            showError(textField: passWordTextField, content: "isPassword", errorLabel: isPasswordLabel)
+            showError(textField: passWordTextField, content: "isPassword", errorLabel: errorPasswordLabel)
         }
-        
         
         if let fullName = fullNameTextField.text, !fullName.isEmpty, isValidEmail(emailTextField), isValidPassword(passWordTextField) {
             print("ok. dang ky")
         } else {
             
         }
-        
-        
-        
     }
     
     func showError(textField: UITextField, content: String, errorLabel: UILabel) {
@@ -105,8 +109,6 @@ class SignUpViewController: UIViewController {
         let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         return passwordPredicate.evaluate(with: password)
     }
-
-
 }
 
 extension SignUpViewController: UITextFieldDelegate {

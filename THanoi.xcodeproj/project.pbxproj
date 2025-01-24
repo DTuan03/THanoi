@@ -74,7 +74,6 @@
 				B823AE44F0000A7B13A0DFEA /* Pods-THanoi.debug.xcconfig */,
 				567349D02C217C0EDEE43E78 /* Pods-THanoi.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -218,6 +217,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XHA9T65C9M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = THanoi/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -247,6 +247,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XHA9T65C9M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = THanoi/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

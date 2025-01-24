@@ -20,13 +20,13 @@ extension NSAttributedString {
 
 extension UITextField {
     func imageLeftView(image: String, placeholder: String) {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: 40))
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
         let imageView = UIImageView(image: UIImage(systemName: image))
         imageView.tintColor = .black
-        imageView.frame = CGRect(x: 20, y: 10, width: 25, height: 20)
+        imageView.frame = CGRect(x: 10, y: 10, width: 25, height: 25)
         paddingView.addSubview(imageView)
         
-        self.backgroundColor = UIColor(red: 244/255, green: 243/255, blue: 246/255, alpha: 1)
+        self.backgroundColor = UIColor(red: 244/256, green: 243/256, blue: 246/256, alpha: 1)
         self.layer.cornerRadius = 15
         self.placeholder = NSLocalizedString(placeholder, comment: "")
         self.leftView = paddingView
@@ -48,5 +48,16 @@ extension UIButton {
         self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         self.backgroundColor = .color
         self.layer.cornerRadius = 15
+    }
+}
+
+extension UIViewController {
+    func addDismissKeyboard() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true) // Ẩn bàn phím
     }
 }

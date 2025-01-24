@@ -8,5 +8,5 @@
 import UIKit
 
 extension UIColor {
-    static let color = UIColor(red: 232/255, green: 123/255, blue: 53/255, alpha: 1.0)
+    static let color = UIColor(red: 232/256, green: 123/256, blue: 53/256, alpha: 1.0)
 }

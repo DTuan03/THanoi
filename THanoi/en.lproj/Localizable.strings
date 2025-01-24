@@ -42,5 +42,6 @@
 
 "titleSignIn" = "Hello!";
 "descriptionSignIn" = "Welcome to THanoi";
+"forgotPassWord" = "For got password?";
 "signIn" = "Sign In";
-"notSignUP" = "Don't have an account? Sign Up";
+"notSignUp" = "Don't have an account? Sign Up";
