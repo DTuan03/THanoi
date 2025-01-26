@@ -7,6 +7,13 @@
 
 import UIKit
 
+enum CollectionViewType {
+    case districtCollectionView
+    case placeCollectionView
+    case tagCollectionView
+    case bestPlaceCollectionView
+}
+
 class HomeViewController: UIViewController {
     @IBOutlet weak var notificationView: UIView!
     @IBOutlet weak var notificationImageView: UIImageView!
@@ -16,6 +23,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var districtCollectionView: UICollectionView!
     @IBOutlet weak var placeCollectionView: UICollectionView!
     @IBOutlet weak var tagCollectionView: UICollectionView!
+    @IBOutlet weak var bestPlaceCollectionView: UICollectionView!
     var selectedItemIndex: IndexPath = IndexPath(row: 0, section: 0)//luu lai index cua item duoc chon
     var districtName: String = "Ba Đình"
     override func viewDidLoad() {
@@ -39,6 +47,14 @@ class HomeViewController: UIViewController {
         
         tagCollectionView.register(UINib(nibName: "TagCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TagCollectionViewCell")
         tagCollectionView.showsHorizontalScrollIndicator = false
+        
+        bestPlaceCollectionView.delegate = self
+        bestPlaceCollectionView.dataSource = self
+        
+//        bestPlaceCollectionView.frame.size.width = view.frame.width - 20 * 2
+        bestPlaceCollectionView.frame.size.height = view.frame.width - 20 * 2
+        
+        bestPlaceCollectionView.register(UINib(nibName: "BestPlaceCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BestPlaceCollectionViewCell")
         
     }
     
@@ -97,6 +113,8 @@ extension HomeViewController: UICollectionViewDataSource {
             numberOfItems = placesIn.count
         } else if collectionView == tagCollectionView {
             numberOfItems = nameTags.count
+        } else if collectionView == bestPlaceCollectionView {
+            numberOfItems = 4
         }
         return numberOfItems
     }
@@ -148,6 +166,16 @@ extension HomeViewController: UICollectionViewDataSource {
             tagCell.nameTagLabel.text = nameTags[indexPath.row]
             
             cell = tagCell
+        } else if collectionView == bestPlaceCollectionView {
+            let bestCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BestPlaceCollectionViewCell", for: indexPath) as! BestPlaceCollectionViewCell
+            bestCell.avatarImageView.image = UIImage(named: "Test")
+            
+            let placeAvgRating = places.sorted { $0.averageRating > $1.averageRating }
+            bestCell.namePlaceLabel.text = placeAvgRating[indexPath.row].name
+            bestCell.avgRatingLabel.text = String(placeAvgRating[indexPath.row].averageRating)
+            bestCell.informationPlaceView.frame.size.width = bestCell.frame.width
+            print(bestCell.frame)
+            cell = bestCell
         }
         return cell
     }
@@ -165,6 +193,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         } else if collectionView == tagCollectionView {
             //FIXME: Đang không thay đổi được khoảng cách giữa các item
             interitemSpacing = 30
+        } else if collectionView == bestPlaceCollectionView {
+            interitemSpacing = 10
         }
         return interitemSpacing
     }
@@ -189,6 +219,14 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             sizeForItem = CGSize(width: 294, height: 355)
         } else if collectionView == tagCollectionView {
             sizeForItem = CGSize(width: 88, height: 115)
+        } else if collectionView == bestPlaceCollectionView {
+            // Tính toán kích thước cell để có 2 cột
+            let padding: CGFloat = 10 // Khoảng cách giua cac item
+            let availableWidth = collectionView.frame.width - padding
+            let width = availableWidth / 2 // Hai cột
+            let height = width + 10// Hai dòng
+            
+            sizeForItem = CGSize(width: width, height: height)
         }
         return sizeForItem
     }
