@@ -79,7 +79,7 @@
                                     <rect key="frame" x="0.0" y="160" width="393" height="45"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tìm kiếm" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a8e-Ym-OeJ">
-                                            <rect key="frame" x="20" y="0.0" width="297" height="45"/>
+                                            <rect key="frame" x="20" y="0.0" width="298" height="45"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -89,9 +89,9 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tio-xM-XEJ">
-                                            <rect key="frame" x="327" y="0.0" width="46" height="45"/>
+                                            <rect key="frame" x="328" y="0.0" width="45" height="14"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="46" id="s9A-gR-ZKN"/>
+                                                <constraint firstAttribute="width" constant="45" id="s9A-gR-ZKN"/>
                                             </constraints>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <state key="normal" title="Button"/>
@@ -104,7 +104,6 @@
                                         <constraint firstItem="a8e-Ym-OeJ" firstAttribute="leading" secondItem="cvd-av-B9F" secondAttribute="leading" constant="20" id="6Qx-hr-PSM"/>
                                         <constraint firstAttribute="trailing" secondItem="Tio-xM-XEJ" secondAttribute="trailing" constant="20" id="KNj-v5-FHA"/>
                                         <constraint firstAttribute="bottom" secondItem="a8e-Ym-OeJ" secondAttribute="bottom" id="Tes-1Y-0ay"/>
-                                        <constraint firstAttribute="bottom" secondItem="Tio-xM-XEJ" secondAttribute="bottom" id="aiv-nC-lzz"/>
                                         <constraint firstItem="Tio-xM-XEJ" firstAttribute="leading" secondItem="a8e-Ym-OeJ" secondAttribute="trailing" constant="10" id="bWt-mJ-Bfg"/>
                                         <constraint firstItem="a8e-Ym-OeJ" firstAttribute="top" secondItem="cvd-av-B9F" secondAttribute="top" id="fk0-oz-Rp3"/>
                                     </constraints>
