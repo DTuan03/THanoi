@@ -207,7 +207,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             // Tạo một UILabel tạm thời với cùng nội dung
             let label = UILabel()
             label.text = namePlace
-            label.font = UIFont.systemFont(ofSize: 16) // Chọn font và kích thước bạn sử dụng trong cell
+            label.font = UIFont.systemFont(ofSize: 16) // Chọn font và kích thước sử dụng trong cell
             
             // Tính toán chiều rộng của label dựa trên nội dung của nó
             let maxWidth: CGFloat = collectionView.frame.width // Giới hạn chiều rộng (tùy chỉnh khoảng cách margin)
