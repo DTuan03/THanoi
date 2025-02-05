@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-THanoi/Pods-THanoi-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseAppCheckInterop/FirebaseAppCheckInterop.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseAuthInterop/FirebaseAuthInterop.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework

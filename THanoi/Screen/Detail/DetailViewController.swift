@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Cosmos
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var heightConstraintOfCollectionView: NSLayoutConstraint!
@@ -13,6 +14,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageCollectionView: UICollectionView!
+    @IBOutlet weak var ratingView: CosmosView!
+    @IBOutlet weak var avatarUserImageView: UIImageView!
+    @IBOutlet weak var reviewTableView: UITableView!
     var topInset: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +30,24 @@ class DetailViewController: UIViewController {
         imageCollectionView.register(UINib(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ImageCollectionViewCell")
         imageCollectionView.bounces = false
         imageCollectionView.isPagingEnabled = true //Lat tung trang
-       
+        
+        ratingView.settings.totalStars = 5
+        ratingView.settings.fillMode = .full
+        ratingView.rating = 0
+        ratingView.settings.starSize = 25
+        ratingView.settings.emptyBorderWidth = 2
+        ratingView.didFinishTouchingCosmos = { rating in
+                    print("Người dùng đánh giá: \(rating) sao")
+                }
+        avatarUserImageView.layer.cornerRadius = avatarUserImageView.frame.size.width / 2
+        
+        reviewTableView.dataSource = self
+        reviewTableView.delegate = self
+        
+        reviewTableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "ReviewTableViewCell")
+        
+        reviewTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -80,5 +101,22 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
     //Khoang cach cac hang
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+}
+
+extension DetailViewController: UITableViewDelegate {
+    
+}
+
+extension DetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath) as! ReviewTableViewCell
+        cell.selectionStyle = .none //tắt hightLine
+        
+        return cell
     }
 }

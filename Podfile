@@ -8,5 +8,6 @@ target 'THanoi' do
   # Pods for THanoi
 pod 'IQKeyboardManagerSwift'
 pod 'FirebaseStorage'
+pod 'Cosmos'
 
 end

@@ -1,4 +1,5 @@
 PODS:
+  - Cosmos (25.0.1)
   - FirebaseAppCheckInterop (11.4.0)
   - FirebaseAuthInterop (11.4.0)
   - FirebaseCore (11.4.2):
@@ -67,11 +68,13 @@ PODS:
     - IQKeyboardToolbar/Placeholderable
 
 DEPENDENCIES:
+  - Cosmos
   - FirebaseStorage
   - IQKeyboardManagerSwift
 
 SPEC REPOS:
   trunk:
+    - Cosmos
     - FirebaseAppCheckInterop
     - FirebaseAuthInterop
     - FirebaseCore
@@ -90,6 +93,7 @@ SPEC REPOS:
     - IQTextView
 
 SPEC CHECKSUMS:
+  Cosmos: 02db0a1c953107049bfd2d7af19ceef55ecb7e98
   FirebaseAppCheckInterop: 1b9643ae2f1ee214488caa2f8e32b7bc2f0f3735
   FirebaseAuthInterop: 9ac948965ac13ec9d8a080f39490ddb2bda30520
   FirebaseCore: 6b32c57269bd999aab34354c3923d92a6e5f3f84
@@ -107,6 +111,6 @@ SPEC CHECKSUMS:
   IQTextInputViewNotification: f5e954d8881fd9808b744e49e024cc0d4bcfe572
   IQTextView: ae13b4922f22e6f027f62c557d9f4f236b19d5c7
 
-PODFILE CHECKSUM: 9b41e44865f67132dd9148b28a15aac6307e14a6
+PODFILE CHECKSUM: d6871dff7be7c5baa8c3bcf3500625cdd73f9ae9
 
 COCOAPODS: 1.16.2

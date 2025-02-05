@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="166" id="KGk-i7-Jjw" customClass="ReviewTableViewCell" customModule="THanoi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="404" height="166"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="404" height="166"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Wq-s8-fnW">
+                        <rect key="frame" x="0.0" y="10" width="169.66666666666666" height="61"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding1" translatesAutoresizingMaskIntoConstraints="NO" id="310-Ru-OW8">
+                                <rect key="frame" x="0.0" y="10.666666666666668" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="310-Ru-OW8" secondAttribute="height" multiplier="1:1" id="CPE-Pe-TKE"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Người dùng THanoi" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TyD-YU-UIU">
+                                <rect key="frame" x="50.000000000000007" y="22.666666666666664" width="119.66666666666669" height="15.666666666666664"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="goI-sW-qiF" customClass="CosmosView" customModule="Cosmos">
+                        <rect key="frame" x="0.0" y="76" width="404" height="33.333333333333343"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldf-A9-xjD">
+                        <rect key="frame" x="0.0" y="109.33333333333333" width="404" height="46.666666666666671"/>
+                        <string key="text">Địa điểm này rất đẹp. Mọi người lưu ý mất cắp. Nên chụp ảnh ở chỗ này, chỗ kia. Địa điểm này rất đẹp. Mọi người lưu ý mất cắp. Nên chụp ảnh ở chỗ này, chỗ kia.</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="goI-sW-qiF" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.2" id="1qa-RY-kca"/>
+                    <constraint firstItem="310-Ru-OW8" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.0990099" id="1sB-an-B2Q"/>
+                    <constraint firstItem="goI-sW-qiF" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="4Jt-mj-mZL"/>
+                    <constraint firstItem="Ldf-A9-xjD" firstAttribute="top" secondItem="goI-sW-qiF" secondAttribute="bottom" id="Kb4-ug-NNi"/>
+                    <constraint firstAttribute="bottom" secondItem="Ldf-A9-xjD" secondAttribute="bottom" constant="10" id="RMz-3u-eEr"/>
+                    <constraint firstItem="goI-sW-qiF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="USl-aX-waf"/>
+                    <constraint firstItem="2Wq-s8-fnW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Zlh-VC-AMJ"/>
+                    <constraint firstItem="2Wq-s8-fnW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="jsi-Kj-HI4"/>
+                    <constraint firstAttribute="trailing" secondItem="Ldf-A9-xjD" secondAttribute="trailing" id="kFk-RQ-adH"/>
+                    <constraint firstItem="Ldf-A9-xjD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lUt-wo-CPZ"/>
+                    <constraint firstItem="goI-sW-qiF" firstAttribute="top" secondItem="2Wq-s8-fnW" secondAttribute="bottom" constant="5" id="xS2-hR-yJL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="avatarOfUserReview" destination="310-Ru-OW8" id="sos-Jt-UTV"/>
+                <outlet property="contentLabel" destination="Ldf-A9-xjD" id="ypP-fY-zoC"/>
+                <outlet property="nameOfUserReview" destination="TyD-YU-UIU" id="O5J-1d-Tlw"/>
+                <outlet property="ratingView" destination="goI-sW-qiF" id="9tX-bX-Txy"/>
+            </connections>
+            <point key="canvasLocation" x="146.56488549618319" y="29.577464788732396"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="onboarding1" width="1920" height="1080"/>
+    </resources>
+</document>
