@@ -14,6 +14,7 @@
                 <outlet property="calendar" destination="5Jw-Xl-sFW" id="J58-vV-d3d"/>
                 <outlet property="containerView" destination="2ET-QI-daK" id="2mj-ar-Gqv"/>
                 <outlet property="currentDateLabel" destination="XSB-yB-3PU" id="Hqk-77-VDe"/>
+                <outlet property="plannedPlaceTableView" destination="Vee-BP-1Vx" id="wJb-tk-dSz"/>
                 <outlet property="selectionDateLabel" destination="Cs7-rC-bNU" id="ZGl-lk-RvW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

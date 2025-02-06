@@ -67,12 +67,14 @@ PODS:
     - IQKeyboardCore
   - IQTextView (1.0.5):
     - IQKeyboardToolbar/Placeholderable
+  - SwipeCellKit (2.7.1)
 
 DEPENDENCIES:
   - Cosmos
   - FirebaseStorage
   - FSCalendar
   - IQKeyboardManagerSwift
+  - SwipeCellKit
 
 SPEC REPOS:
   trunk:
@@ -94,6 +96,7 @@ SPEC REPOS:
     - IQKeyboardToolbarManager
     - IQTextInputViewNotification
     - IQTextView
+    - SwipeCellKit
 
 SPEC CHECKSUMS:
   Cosmos: 02db0a1c953107049bfd2d7af19ceef55ecb7e98
@@ -114,7 +117,8 @@ SPEC CHECKSUMS:
   IQKeyboardToolbarManager: 6f4072ac620c2572d4af8c09f42a801f3e4909f7
   IQTextInputViewNotification: f5e954d8881fd9808b744e49e024cc0d4bcfe572
   IQTextView: ae13b4922f22e6f027f62c557d9f4f236b19d5c7
+  SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
 
-PODFILE CHECKSUM: 2c5a6445a561969ea4c08270ec4498541ee50a24
+PODFILE CHECKSUM: 803e2a6bb65cdde22a9e0aab0d9b8d5ee2676f90
 
 COCOAPODS: 1.16.2

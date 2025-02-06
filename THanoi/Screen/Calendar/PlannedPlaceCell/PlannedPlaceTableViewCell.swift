@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class PlannedPlaceTableViewCell: UITableViewCell {
+class PlannedPlaceTableViewCell: SwipeTableViewCell {
 
+    @IBOutlet weak var avatarPlaceImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        avatarPlaceImageView.layer.cornerRadius = 10
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

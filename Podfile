@@ -10,5 +10,5 @@ pod 'IQKeyboardManagerSwift'
 pod 'FirebaseStorage'
 pod 'Cosmos'
 pod 'FSCalendar' 
-
+pod 'SwipeCellKit'
 end
