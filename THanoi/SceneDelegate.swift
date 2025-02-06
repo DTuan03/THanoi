@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         var firstVC: UIViewController = GetStartedViewController()
         
         if defaults.bool(forKey: "isOnboarding") {
-            firstVC = DetailViewController()
+            firstVC = CalendarViewController()
         }
         
 //        let gSVC = GetStartedViewController()

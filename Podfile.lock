@@ -17,6 +17,7 @@ PODS:
     - FirebaseCoreExtension (~> 11.4)
     - GoogleUtilities/Environment (~> 8.0)
     - GTMSessionFetcher/Core (< 5.0, >= 3.4)
+  - FSCalendar (2.8.4)
   - GoogleUtilities/Environment (8.0.2):
     - GoogleUtilities/Privacy
   - GoogleUtilities/Logger (8.0.2):
@@ -70,6 +71,7 @@ PODS:
 DEPENDENCIES:
   - Cosmos
   - FirebaseStorage
+  - FSCalendar
   - IQKeyboardManagerSwift
 
 SPEC REPOS:
@@ -81,6 +83,7 @@ SPEC REPOS:
     - FirebaseCoreExtension
     - FirebaseCoreInternal
     - FirebaseStorage
+    - FSCalendar
     - GoogleUtilities
     - GTMSessionFetcher
     - IQKeyboardCore
@@ -100,6 +103,7 @@ SPEC CHECKSUMS:
   FirebaseCoreExtension: f1bc67a4702931a7caa097d8e4ac0a1b0d16720e
   FirebaseCoreInternal: 35731192cab10797b88411be84940d2beb33a238
   FirebaseStorage: 1bf8f80ac3bb02c72844b7350e95e10be7113ef0
+  FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   GoogleUtilities: 26a3abef001b6533cf678d3eb38fd3f614b7872d
   GTMSessionFetcher: 923b710231ad3d6f3f0495ac1ced35421e07d9a6
   IQKeyboardCore: 28c8bf3bcd8ba5aa1570b318cbc4da94b861711e
@@ -111,6 +115,6 @@ SPEC CHECKSUMS:
   IQTextInputViewNotification: f5e954d8881fd9808b744e49e024cc0d4bcfe572
   IQTextView: ae13b4922f22e6f027f62c557d9f4f236b19d5c7
 
-PODFILE CHECKSUM: d6871dff7be7c5baa8c3bcf3500625cdd73f9ae9
+PODFILE CHECKSUM: 2c5a6445a561969ea4c08270ec4498541ee50a24
 
 COCOAPODS: 1.16.2

@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
-        //dich chuyen textfield va textview cho phu hop khi co ban phim de len
+        //dich chuyen textfield va textview cho phu hop khi co ban phim đè len
         IQKeyboardManager.shared.isEnabled = true
         
         return true
