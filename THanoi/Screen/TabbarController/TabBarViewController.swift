@@ -40,8 +40,8 @@ class TabBarViewController: UIViewController {
         
         childVCs = [
             HomeViewController(),
-            SignInViewController(),
-            SignUpViewController(),
+            CalendarViewController(),
+            FavoriteViewController(),
             HomeViewController()
         ]
         
@@ -54,6 +54,8 @@ class TabBarViewController: UIViewController {
         addGesture(to: accountView, index: 3)
         
         switchToViewController(at: 0)
+        labels[0].textColor = UIColor.color
+        imageViews[0].tintColor = UIColor.color
         
     }
     

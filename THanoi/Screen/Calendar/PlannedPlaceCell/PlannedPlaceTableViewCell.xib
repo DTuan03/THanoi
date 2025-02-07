@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Test" translatesAutoresizingMaskIntoConstraints="NO" id="gwd-yS-ej9">
-                        <rect key="frame" x="20.000000000000007" y="10" width="91.666666666666686" height="91.666666666666671"/>
+                        <rect key="frame" x="30.000000000000007" y="10" width="91.666666666666686" height="91.666666666666671"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="gwd-yS-ej9" secondAttribute="height" multiplier="1:1" id="7PF-SS-vx9"/>
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ycy-bX-TzX">
-                        <rect key="frame" x="126.66666666666669" y="35.333333333333336" width="107.33333333333331" height="41.000000000000007"/>
+                        <rect key="frame" x="136.66666666666666" y="35.333333333333336" width="107.33333333333334" height="41.000000000000007"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hồ Tây" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IX7-I1-WGd">
                                 <rect key="frame" x="0.0" y="0.0" width="107.33333333333333" height="21.666666666666668"/>
@@ -50,7 +50,7 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="gwd-yS-ej9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="5BW-Vn-Gn3"/>
+                    <constraint firstItem="gwd-yS-ej9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="5BW-Vn-Gn3"/>
                     <constraint firstItem="pS1-mR-BPL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EDX-X3-g1v"/>
                     <constraint firstItem="gwd-yS-ej9" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.15" id="Gcf-3G-yOm"/>
                     <constraint firstItem="gwd-yS-ej9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="IlI-QJ-sdA"/>

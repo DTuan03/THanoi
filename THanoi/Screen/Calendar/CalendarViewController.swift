@@ -109,15 +109,15 @@ extension CalendarViewController: UITableViewDataSource {
 
 extension CalendarViewController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
+        guard orientation == .right else { return nil } //Kiểm tra hướng vuối của cell trong Swipe, nếu kh phải vuốt phải thì trả về nil
         
         //Tao hanh dong xoa
-        let deleteAction = SwipeAction(style: .destructive, title: "", handler: { action, indexPath in
+        let deleteAction = SwipeAction(style: .destructive, title: nil, handler: { action, indexPath in
             print("Đã xóa item tại \(indexPath.row)")
         })
         
         // Thêm icon
-        deleteAction.image = UIImage(systemName: "trash")
+        deleteAction.image = UIImage(systemName: "trash.fill")
         
         return [deleteAction]
     }
