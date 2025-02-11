@@ -68,6 +68,10 @@ class SignInViewController: UIViewController {
         
         if isValidEmail(emailTextField), isValidPassword(passwordTextField) {
             print("ok. dang nhap")
+            let tabbarVC = TabBarViewController()
+            tabbarVC.modalTransitionStyle = .crossDissolve
+            tabbarVC.modalPresentationStyle = .fullScreen
+            present(tabbarVC, animated: true)
         } else {
             
         }
