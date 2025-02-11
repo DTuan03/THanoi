@@ -97,6 +97,11 @@ extension HomeViewController: UICollectionViewDelegate {
             districtName = districtsInHanoi[indexPath.row]
             districtCollectionView.reloadData()
             placeCollectionView.reloadData()
+        } else if collectionView == placeCollectionView {
+            let detailVC = DetailViewController()
+            detailVC.modalTransitionStyle = .crossDissolve
+            detailVC.modalPresentationStyle = .fullScreen
+            present(detailVC, animated: true)
         }
     }
 }
