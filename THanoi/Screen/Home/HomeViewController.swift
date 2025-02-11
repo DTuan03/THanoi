@@ -24,44 +24,27 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var placeCollectionView: UICollectionView!
     @IBOutlet weak var tagCollectionView: UICollectionView!
     @IBOutlet weak var bestPlaceCollectionView: UICollectionView!
-    var selectedItemIndex: IndexPath = IndexPath(row: 0, section: 0)//luu lai index cua item duoc chon
+    @IBOutlet weak var heightPlaceCollectionAnhNamePlaceCollection: NSLayoutConstraint!
+    var selectedItemIndex: IndexPath = IndexPath(row: 0, section: 0) //luu lai index cua item duoc chon
     var districtName: String = "Ba Đình"
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpHeader()
         
-        districtCollectionView.delegate = self
-        districtCollectionView.dataSource = self
-        
-        districtCollectionView.register(UINib(nibName: "NamePlaceCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "NamePlaceCollectionViewCell")
-        districtCollectionView.showsHorizontalScrollIndicator = false
-        
-        placeCollectionView.delegate = self
-        placeCollectionView.dataSource = self
-        
-        placeCollectionView.register(UINib(nibName: "PlaceCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PlaceCollectionViewCell")
-        placeCollectionView.showsHorizontalScrollIndicator = false
-        
-        tagCollectionView.delegate = self
-        tagCollectionView.dataSource = self
-        
-        tagCollectionView.register(UINib(nibName: "TagCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TagCollectionViewCell")
-        tagCollectionView.showsHorizontalScrollIndicator = false
-        
-        bestPlaceCollectionView.delegate = self
-        bestPlaceCollectionView.dataSource = self
-        
-//        bestPlaceCollectionView.frame.size.width = view.frame.width - 20 * 2
-        bestPlaceCollectionView.frame.size.height = view.frame.width - 20 * 2
-        
-        bestPlaceCollectionView.register(UINib(nibName: "BestPlaceCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BestPlaceCollectionViewCell")
-        
+        setupCollectionView(districtCollectionView, cellIdentifier: "NamePlaceCollectionViewCell")
+        setupCollectionView(placeCollectionView, cellIdentifier: "PlaceCollectionViewCell")
+        setupCollectionView(tagCollectionView, cellIdentifier: "TagCollectionViewCell")
+        setupCollectionView(bestPlaceCollectionView, cellIdentifier: "BestPlaceCollectionViewCell")
+
+        configureFlowLayout(for: placeCollectionView)
+        configureFlowLayout(for: tagCollectionView)
+        configureFlowLayout(for: districtCollectionView)
     }
     
     func setUpHeader() {
         notificationView.layer.borderWidth = 1
         notificationView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
-        notificationView.layer.cornerRadius = 25
+        notificationView.layer.cornerRadius = notificationView.frame.size.height / 2
         notificationImageView.image = UIImage(systemName: "bell")
         notificationImageView.tintColor = .gray
         
@@ -86,6 +69,25 @@ class HomeViewController: UIViewController {
         filterButton.clipsToBounds = true
     }
     
+    func setupCollectionView(_ collectionView: UICollectionView, cellIdentifier: String) {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.showsHorizontalScrollIndicator = false
+    }
+        
+    func configureFlowLayout(for collectionView: UICollectionView,
+                             estimatedItemSize: CGSize = .zero,
+                             minimumLineSpacing: CGFloat = 20,
+                             sectionInset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)) {
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.estimatedItemSize = estimatedItemSize
+            layout.minimumLineSpacing = minimumLineSpacing
+            layout.sectionInset = sectionInset
+        }
+    }
+
+    
 }
 
 extension HomeViewController: UICollectionViewDelegate {
@@ -96,9 +98,7 @@ extension HomeViewController: UICollectionViewDelegate {
             districtCollectionView.reloadData()
             placeCollectionView.reloadData()
         }
-        
     }
-    
 }
 
 extension HomeViewController: UICollectionViewDataSource {
@@ -160,6 +160,7 @@ extension HomeViewController: UICollectionViewDataSource {
             placeCell.averageRatingLabel.text = String(placeAvgRating[indexPath.row])
             
             cell = placeCell
+
         } else if collectionView == tagCollectionView {
             let tagCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagCollectionViewCell", for: indexPath) as! TagCollectionViewCell
             tagCell.avatarImageView.image = UIImage(named: "Test")
@@ -173,8 +174,6 @@ extension HomeViewController: UICollectionViewDataSource {
             let placeAvgRating = places.sorted { $0.averageRating > $1.averageRating }
             bestCell.namePlaceLabel.text = placeAvgRating[indexPath.row].name
             bestCell.avgRatingLabel.text = String(placeAvgRating[indexPath.row].averageRating)
-            bestCell.informationPlaceView.frame.size.width = bestCell.frame.width
-            print(bestCell.frame)
             cell = bestCell
         }
         return cell
@@ -182,49 +181,36 @@ extension HomeViewController: UICollectionViewDataSource {
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    //Khoang cach giua cac item
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        var interitemSpacing: CGFloat = 0
-        if collectionView == districtCollectionView {
-            interitemSpacing = 20
-        } else if collectionView == placeCollectionView {
-            //FIXME: Đang không thay đổi được khoảng cách giữa các item
-            interitemSpacing = 30
-        } else if collectionView == tagCollectionView {
-            //FIXME: Đang không thay đổi được khoảng cách giữa các item
-            interitemSpacing = 30
-        } else if collectionView == bestPlaceCollectionView {
-            interitemSpacing = 10
-        }
-        return interitemSpacing
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var sizeForItem: CGSize = CGSize(width: 0, height: 0)
         if collectionView == districtCollectionView {
-            let namePlace = districtsInHanoi[indexPath.row] //nội dung muốn hiển thị trong label
-            
-            // Tạo một UILabel tạm thời với cùng nội dung
+            let namePlace = districtsInHanoi[indexPath.row]
+
             let label = UILabel()
             label.text = namePlace
-            label.font = UIFont.systemFont(ofSize: 16) // Chọn font và kích thước sử dụng trong cell
+            label.font = UIFont.systemFont(ofSize: 16)
             
             // Tính toán chiều rộng của label dựa trên nội dung của nó
             let maxWidth: CGFloat = collectionView.frame.width // Giới hạn chiều rộng (tùy chỉnh khoảng cách margin)
             let labelSize = label.sizeThatFits(CGSize(width: maxWidth, height: .greatestFiniteMagnitude))
             
             // Trả về kích thước cell với chiều rộng bằng chiều rộng của label và chiều cao cố định
-            sizeForItem = CGSize(width: labelSize.width + 2, height: 30) // Chiều rộng = width của label + margin, chiều cao tùy chỉnh
+            sizeForItem = CGSize(width: labelSize.width + 22, height: 30) // Chiều rộng = width của label + margin, chiều cao tùy chỉnh
         } else if collectionView == placeCollectionView {
-            sizeForItem = CGSize(width: 294, height: 355)
+            let height = collectionView.frame.size.height * 0.95
+            let width = height * 0.8
+            sizeForItem = CGSize(width: width, height: height)
         } else if collectionView == tagCollectionView {
-            sizeForItem = CGSize(width: 88, height: 115)
+            let height = collectionView.frame.size.height * 0.9
+            let width = height * 0.7
+            sizeForItem = CGSize(width: width, height: height)
         } else if collectionView == bestPlaceCollectionView {
             // Tính toán kích thước cell để có 2 cột
             let padding: CGFloat = 10 // Khoảng cách giua cac item
             let availableWidth = collectionView.frame.width - padding
             let width = availableWidth / 2 // Hai cột
-            let height = width + 10// Hai dòng
+            let height = width// Hai dòng
             
             sizeForItem = CGSize(width: width, height: height)
         }

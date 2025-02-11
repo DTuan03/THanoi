@@ -45,6 +45,12 @@ class CalendarViewController: UIViewController {
         plannedPlaceTableView.delegate = self
         
         plannedPlaceTableView.register(UINib(nibName: "PlannedPlaceTableViewCell", bundle: nil), forCellReuseIdentifier: "PlannedPlaceTableViewCell")
+        
+//        plannedPlaceTableView.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+//        plannedPlaceTableView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        plannedPlaceTableView.estimatedRowHeight = 30
+        plannedPlaceTableView.rowHeight = UITableView.automaticDimension
+
     }
     
     @objc func scrollCurrentDate() {
@@ -88,12 +94,17 @@ extension CalendarViewController: FSCalendarDelegate {
 }
 
 extension CalendarViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let witdhCell = UIScreen.main.bounds.width
+        let height = witdhCell * 0.15 + 20 //vi image co w=h mà w = 0.15 * wCell và 20 là khoảng cách top va bottom
+        
+        return height
+    }
 }
 
 extension CalendarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

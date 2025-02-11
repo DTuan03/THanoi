@@ -152,14 +152,14 @@
                                             </constraints>
                                             <standardMapConfiguration key="preferredConfiguration"/>
                                         </mapView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Góp ý" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWI-64-EK1">
-                                            <rect key="frame" x="20.000000000000004" y="958.33333333333326" width="53.333333333333343" height="24"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viết góp ý" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWI-64-EK1">
+                                            <rect key="frame" x="20" y="958.33333333333326" width="92" height="24"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VBU-xo-4FB">
-                                            <rect key="frame" x="20" y="1179.3333333333333" width="353" height="557"/>
+                                            <rect key="frame" x="20" y="1223.3333333333333" width="353" height="513"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         </tableView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Hoang Nam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0H-9K-e3v">
@@ -203,6 +203,12 @@
                                             <color key="textColor" red="1" green="0.63752028910000003" blue="0.030234857550000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Góp ý" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wcv-5D-MX2">
+                                            <rect key="frame" x="20.000000000000004" y="1179.3333333333333" width="53.333333333333343" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -222,6 +228,7 @@
                                         <constraint firstItem="Pyf-wx-T18" firstAttribute="top" secondItem="LWI-64-EK1" secondAttribute="bottom" constant="30" id="MmL-Nz-hTe"/>
                                         <constraint firstItem="eHS-AK-g4v" firstAttribute="leading" secondItem="PTs-TW-JiA" secondAttribute="leading" constant="20" id="ODP-vV-B0e"/>
                                         <constraint firstAttribute="trailing" secondItem="Bdf-bW-L6y" secondAttribute="trailing" constant="20" id="OXe-Ir-k2n"/>
+                                        <constraint firstItem="VBU-xo-4FB" firstAttribute="top" secondItem="Wcv-5D-MX2" secondAttribute="bottom" constant="20" id="TKD-gd-Lge"/>
                                         <constraint firstItem="LWI-64-EK1" firstAttribute="leading" secondItem="PTs-TW-JiA" secondAttribute="leading" constant="20" id="TWV-Am-nEv"/>
                                         <constraint firstItem="eHS-AK-g4v" firstAttribute="top" secondItem="Y3U-ub-dR8" secondAttribute="bottom" constant="40" id="Th0-BY-cfQ"/>
                                         <constraint firstAttribute="bottom" secondItem="NAy-iA-8C5" secondAttribute="bottom" constant="5" id="W9o-a3-Z61"/>
@@ -242,12 +249,13 @@
                                         <constraint firstItem="mRw-E5-KQv" firstAttribute="top" secondItem="3h6-be-70J" secondAttribute="bottom" constant="40" id="mCY-Kv-Mfw"/>
                                         <constraint firstItem="WFF-qt-iF5" firstAttribute="top" secondItem="PTs-TW-JiA" secondAttribute="top" constant="15" id="oqA-Ng-eyi"/>
                                         <constraint firstAttribute="trailing" secondItem="KXw-Hr-EOK" secondAttribute="trailing" constant="20" id="pOh-Is-E5x"/>
-                                        <constraint firstItem="VBU-xo-4FB" firstAttribute="top" secondItem="DQT-LO-8BV" secondAttribute="bottom" constant="20" id="qSt-27-DTx"/>
                                         <constraint firstItem="3h6-be-70J" firstAttribute="leading" secondItem="PTs-TW-JiA" secondAttribute="leading" constant="20" id="uSX-5F-KZg"/>
+                                        <constraint firstItem="Wcv-5D-MX2" firstAttribute="leading" secondItem="PTs-TW-JiA" secondAttribute="leading" constant="20" id="upt-Qb-e0c"/>
                                         <constraint firstItem="VBU-xo-4FB" firstAttribute="leading" secondItem="PTs-TW-JiA" secondAttribute="leading" constant="20" id="vKY-Yp-Dre"/>
                                         <constraint firstAttribute="trailing" secondItem="DQT-LO-8BV" secondAttribute="trailing" constant="20" id="w7m-sH-nfO"/>
                                         <constraint firstItem="o0H-qR-4Zt" firstAttribute="top" secondItem="PTs-TW-JiA" secondAttribute="top" constant="15" id="wa9-n4-de3"/>
                                         <constraint firstItem="Bdf-bW-L6y" firstAttribute="top" secondItem="mRw-E5-KQv" secondAttribute="bottom" constant="5" id="wfo-73-9Fs"/>
+                                        <constraint firstItem="Wcv-5D-MX2" firstAttribute="top" secondItem="DQT-LO-8BV" secondAttribute="bottom" constant="20" id="yxt-GR-dJh"/>
                                     </constraints>
                                 </view>
                             </subviews>

@@ -104,7 +104,8 @@ class OnboardingViewController: UIViewController {
             description.translatesAutoresizingMaskIntoConstraints = false
             description.text = onboarding.description
             description.numberOfLines = 0
-            description.font = UIFont.systemFont(ofSize: 18)
+            description.font = UIFont.boldSystemFont(ofSize: 17)
+            description.textColor = UIColor.gray
             description.textAlignment = .center
             contentView.addSubview(description)
             

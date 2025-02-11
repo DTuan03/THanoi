@@ -20,10 +20,12 @@ extension NSAttributedString {
 
 extension UITextField {
     func imageLeftView(image: String, placeholder: String) {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         let imageView = UIImageView(image: UIImage(systemName: image))
         imageView.tintColor = .black
-        imageView.frame = CGRect(x: 10, y: 10, width: 25, height: 25)
+        //Công thuc căn giữa 1 view: (containerW - w) / 2
+        imageView.frame = CGRect(x: 15, y: 15, width: 20, height: 20)
+        imageView.contentMode = .scaleAspectFill
         paddingView.addSubview(imageView)
         
         self.backgroundColor = UIColor(red: 244/256, green: 243/256, blue: 246/256, alpha: 1)

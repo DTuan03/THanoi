@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="69" id="KGk-i7-Jjw" customClass="SettingTableViewCell" customModule="THanoi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="407" height="69"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="407" height="69"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NNp-S8-YBs">
+                        <rect key="frame" x="20" y="21.666666666666664" width="28.333333333333329" height="25.666666666666664"/>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="NNp-S8-YBs" secondAttribute="height" multiplier="1:1" id="k1U-nf-H3h"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hồ sơ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ho-Z4-ftZ">
+                        <rect key="frame" x="63.333333333333343" y="24.333333333333336" width="45" height="20.333333333333336"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.forward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rFV-hq-1qz">
+                        <rect key="frame" x="366.66666666666669" y="26.333333333333332" width="20.333333333333314" height="16.666666666666654"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="rFV-hq-1qz" secondAttribute="height" multiplier="1:1" id="f9y-wa-knh"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="0Ho-Z4-ftZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6p2-ki-TOs"/>
+                    <constraint firstItem="rFV-hq-1qz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="73n-td-CdC"/>
+                    <constraint firstItem="NNp-S8-YBs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="L0w-V4-IXI"/>
+                    <constraint firstItem="rFV-hq-1qz" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.049959" id="P1G-Ha-aBi"/>
+                    <constraint firstItem="NNp-S8-YBs" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.07" id="px9-Cf-cK6"/>
+                    <constraint firstItem="NNp-S8-YBs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="sEt-np-FJK"/>
+                    <constraint firstItem="0Ho-Z4-ftZ" firstAttribute="leading" secondItem="NNp-S8-YBs" secondAttribute="trailing" constant="15" id="vWX-md-HGT"/>
+                    <constraint firstAttribute="trailing" secondItem="rFV-hq-1qz" secondAttribute="trailing" constant="20" id="zCk-zC-mSq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="avatarSettingImageView" destination="NNp-S8-YBs" id="7rH-US-QPk"/>
+                <outlet property="detailArrowImageView" destination="rFV-hq-1qz" id="twX-HT-m85"/>
+                <outlet property="nameSettingLabel" destination="0Ho-Z4-ftZ" id="TKK-RM-DcF"/>
+            </connections>
+            <point key="canvasLocation" x="292.36641221374043" y="-7.394366197183099"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chevron.forward" catalog="system" width="97" height="128"/>
+        <image name="person" catalog="system" width="128" height="121"/>
+    </resources>
+</document>

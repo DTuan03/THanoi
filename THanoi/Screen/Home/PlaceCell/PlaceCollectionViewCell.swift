@@ -18,7 +18,7 @@ class PlaceCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         self.layer.borderWidth = 0.2
         self.layer.borderColor = UIColor.lightGray.cgColor
-        self.layer.shadowRadius = 1                   // Bán kính của bóng (độ mềm mại của bóng)
+//        self.layer.shadowRadius = 1                   // Bán kính của bóng (độ mềm mại của bóng)
         self.layer.cornerRadius = 10
 //        containerView.layer.cornerRadius = 10
 //        containerView.layer.borderWidth = 1

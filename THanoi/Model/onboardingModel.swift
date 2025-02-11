@@ -1,5 +1,5 @@
 //
-//  onboardingModel.swift
+//  OnboardingModel.swift
 //  THanoi
 //
 //  Created by Tuấn on 11/12/24.

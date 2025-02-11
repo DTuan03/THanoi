@@ -42,21 +42,32 @@
                         <constraint firstItem="dM1-Ow-hYa" firstAttribute="leading" secondItem="meB-9p-4Bm" secondAttribute="leading" id="cmK-h4-Yvq"/>
                     </constraints>
                 </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RKv-vQ-Mjq">
+                    <rect key="frame" x="349.33333333333331" y="74.666666666666671" width="23.666666666666686" height="22.666666666666671"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="RKv-vQ-Mjq" secondAttribute="height" multiplier="1:1" id="lwi-2S-QcY"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="wFu-ZK-L3r" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="2gK-o1-IlZ"/>
                 <constraint firstItem="meB-9p-4Bm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2it-tZ-4DF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RKv-vQ-Mjq" secondAttribute="trailing" constant="20" id="HLc-9R-aCO"/>
+                <constraint firstItem="RKv-vQ-Mjq" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.06" id="R1V-b5-ESW"/>
                 <constraint firstItem="meB-9p-4Bm" firstAttribute="top" secondItem="wFu-ZK-L3r" secondAttribute="bottom" constant="20" id="hX2-nD-wH7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="meB-9p-4Bm" secondAttribute="bottom" id="qBK-Gs-nrB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="meB-9p-4Bm" secondAttribute="trailing" id="qge-AP-Yn6"/>
+                <constraint firstItem="RKv-vQ-Mjq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="u3c-QL-Kbm"/>
                 <constraint firstItem="wFu-ZK-L3r" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yCl-o9-vgK"/>
             </constraints>
-            <point key="canvasLocation" x="73" y="-11"/>
+            <point key="canvasLocation" x="72.51908396946564" y="-11.267605633802818"/>
         </view>
     </objects>
     <resources>
+        <image name="bell" catalog="system" width="125" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

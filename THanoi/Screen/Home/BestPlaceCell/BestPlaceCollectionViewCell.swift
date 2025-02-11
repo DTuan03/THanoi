@@ -26,5 +26,4 @@ class BestPlaceCollectionViewCell: UICollectionViewCell {
 //        mask.path = path.cgPath
 //        informationPlaceView.layer.mask = mask
     }
-    
 }

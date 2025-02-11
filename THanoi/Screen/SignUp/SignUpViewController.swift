@@ -24,19 +24,21 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUpWithGoogle: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //TitleLabel
         titleLabel.text = NSLocalizedString("titleSignUp", comment: "")
+        //description
         descriptionLabel.text = NSLocalizedString("descriptionSignUp", comment: "")
-        
+        //fullNameTextField
         fullNameTextField.imageLeftView(image: "person", placeholder: "fullName")
-        emailTextField.imageLeftView(image: "envelope", placeholder: "email")
-        passWordTextField.imageLeftView(image: "lock", placeholder: "passWord")
-        
         fullNameTextField.delegate = self
-        emailTextField.delegate = self
-        passWordTextField.delegate = self
-        
         fullNameTextField.tag = 1
+        //emailTextField
+        emailTextField.imageLeftView(image: "envelope", placeholder: "email")
+        emailTextField.delegate = self
         emailTextField.tag = 2
+        //password
+        passWordTextField.imageLeftView(image: "lock", placeholder: "passWord")
+        passWordTextField.delegate = self
         passWordTextField.tag = 3
         
         signUpButton.setUpButton(title: "signUp")

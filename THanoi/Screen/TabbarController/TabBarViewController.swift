@@ -35,14 +35,12 @@ class TabBarViewController: UIViewController {
         tabBarView.layer.borderWidth = 1
         tabBarView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
         tabBarView.layer.masksToBounds = true
-        
-        //        let views = [homeView, calendarView, favoriteView, accountView]
-        
+                
         childVCs = [
             HomeViewController(),
             CalendarViewController(),
             FavoriteViewController(),
-            HomeViewController()
+            AccountViewController()
         ]
         
         imageViews = [homeImageView, calendarImageView, favoriteImageView, accountImageView]
