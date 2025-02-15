@@ -26,11 +26,18 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RKv-vQ-Mjq">
+                    <rect key="frame" x="349.33333333333331" y="74.666666666666671" width="23.666666666666686" height="22.666666666666671"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="RKv-vQ-Mjq" secondAttribute="height" multiplier="1:1" id="lwi-2S-QcY"/>
+                    </constraints>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="meB-9p-4Bm">
-                    <rect key="frame" x="0.0" y="120.33333333333331" width="393" height="697.66666666666674"/>
+                    <rect key="frame" x="0.0" y="120.33333333333331" width="393" height="632.66666666666674"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dM1-Ow-hYa">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="697.66666666666663"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="632.66666666666663"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </tableView>
                     </subviews>
@@ -42,13 +49,6 @@
                         <constraint firstItem="dM1-Ow-hYa" firstAttribute="leading" secondItem="meB-9p-4Bm" secondAttribute="leading" id="cmK-h4-Yvq"/>
                     </constraints>
                 </view>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RKv-vQ-Mjq">
-                    <rect key="frame" x="349.33333333333331" y="74.666666666666671" width="23.666666666666686" height="22.666666666666671"/>
-                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="RKv-vQ-Mjq" secondAttribute="height" multiplier="1:1" id="lwi-2S-QcY"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -58,7 +58,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RKv-vQ-Mjq" secondAttribute="trailing" constant="20" id="HLc-9R-aCO"/>
                 <constraint firstItem="RKv-vQ-Mjq" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.06" id="R1V-b5-ESW"/>
                 <constraint firstItem="meB-9p-4Bm" firstAttribute="top" secondItem="wFu-ZK-L3r" secondAttribute="bottom" constant="20" id="hX2-nD-wH7"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="meB-9p-4Bm" secondAttribute="bottom" id="qBK-Gs-nrB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="meB-9p-4Bm" secondAttribute="bottom" constant="65" id="qBK-Gs-nrB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="meB-9p-4Bm" secondAttribute="trailing" id="qge-AP-Yn6"/>
                 <constraint firstItem="RKv-vQ-Mjq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="u3c-QL-Kbm"/>
                 <constraint firstItem="wFu-ZK-L3r" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yCl-o9-vgK"/>

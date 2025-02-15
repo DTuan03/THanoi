@@ -11,10 +11,19 @@ import SwipeCellKit
 class FavoritePlaceTableViewCell: UITableViewCell {
     
     @IBOutlet weak var avatarPlaceImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var avgRatingLabel: UILabel!
     @IBOutlet weak var deleteView: UIView!
     
+    var onTapContainerView: (() -> Void)?
+    
+    var onTapDeleteView: (() -> Void)?
+    
     var originalPosition: CGPoint?
+    
+    var currentPannedCell: UITableViewCell?
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -26,6 +35,15 @@ class FavoritePlaceTableViewCell: UITableViewCell {
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         containerView.addGestureRecognizer(panGesture)
+        
+        let containerViewTap = UITapGestureRecognizer(target: self, action: #selector(containerViewTapped))
+        containerView.addGestureRecognizer(containerViewTap)
+        
+        let deleteViewTap = UITapGestureRecognizer(target: self, action: #selector(deleteViewTapped))
+        deleteView.addGestureRecognizer(deleteViewTap)
+        
+        // lawsng nghe thông báo để reset các cell khác
+        NotificationCenter.default.addObserver(self, selector: #selector(resetPositionCell), name: Notification.Name("CloseOtherCells"), object: nil)
     }
     
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
@@ -35,18 +53,20 @@ class FavoritePlaceTableViewCell: UITableViewCell {
         switch gesture.state {
         case .began:
             originalPosition = containerView.center
+            // gửi thông báo để reset các cell khác
             NotificationCenter.default.post(name: Notification.Name("CloseOtherCells"), object: self)
         case .changed:
-            // Di chuyển view con theo tay
-            if translation.x < 0 { // Chỉ cho phép vuốt sang trái
+            // di chuyển view con theo tay
+            if translation.x < 0 {
                 containerView.transform = CGAffineTransform(translationX: translation.x, y: 0)
             }
         case .ended:
-            if translation.x < -50 { // Nếu vuốt đủ xa, hiển thị nút Xóa
+            // nếu kéo đủ sâu thfi giữ nguyên, còn kh thì về trạng thái ban đầu
+            if translation.x < -50 {
                 UIView.animate(withDuration: 0.1) {
                     self.containerView.transform = CGAffineTransform(translationX: -60, y: 0)
                 }
-            } else { // Nếu vuốt không đủ xa, trả về vị trí ban đầu
+            } else {
                 UIView.animate(withDuration: 0.2) {
                     self.containerView.transform = .identity
                 }
@@ -59,7 +79,19 @@ class FavoritePlaceTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        // Configure the view for the selected state
     }
     
+    @objc func resetPositionCell() {
+        UIView.animate(withDuration: 0.2) {
+            self.containerView.transform = .identity
+        }
+    }
+    
+    @objc func containerViewTapped() {
+        onTapContainerView?()
+    }
+    
+    @objc func deleteViewTapped() {
+        onTapDeleteView?()
+    }
 }

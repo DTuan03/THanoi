@@ -38,8 +38,8 @@ class TabBarViewController: UIViewController {
                 
         childVCs = [
             HomeViewController(),
-            CalendarViewController(),
-            FavoriteViewController(),
+            CalendarViewController(calendars: calendars),
+            FavoriteViewController(favorites: favorites),
             AccountViewController()
         ]
         
@@ -79,6 +79,7 @@ class TabBarViewController: UIViewController {
             currentVC.view.removeFromSuperview()
             //gỡ luôn khỏi vc cha
             currentVC.removeFromParent()
+            
         }
         
         // Them moi vC

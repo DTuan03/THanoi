@@ -31,10 +31,12 @@ class AccountViewController: UIViewController {
         
         settingTableView.isScrollEnabled = false
         
-        settingTableView.delegate = self
+        settingTableView.delegate=self
         settingTableView.dataSource = self
         
         settingTableView.register(UINib(nibName: "SettingTableViewCell", bundle: nil), forCellReuseIdentifier: "SettingTableViewCell")
+        
+        enableSwipeBack()
     }
     
     override func viewDidAppear(_ animated: Bool) {

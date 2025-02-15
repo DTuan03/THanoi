@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecentSearchViewController" customModule="THanoi" customModuleProvider="target">
             <connections>
+                <outlet property="backImageView" destination="SsD-zo-vXK" id="BHW-jn-691"/>
                 <outlet property="filterButton" destination="CnM-iA-TNz" id="gO3-3R-efJ"/>
                 <outlet property="historySearchTableView" destination="jum-NW-nki" id="K8h-1Y-upg"/>
                 <outlet property="searchTextField" destination="SB7-8f-bF7" id="47S-1n-Awx"/>
@@ -57,7 +58,7 @@
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.backward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SsD-zo-vXK">
+                        <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.backward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SsD-zo-vXK">
                             <rect key="frame" x="20" y="19.666666666666671" width="25" height="21.333333333333329"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -92,6 +93,7 @@
                                 <constraint firstAttribute="width" secondItem="CnM-iA-TNz" secondAttribute="height" multiplier="1:1" id="lBk-Id-MIS"/>
                                 <constraint firstAttribute="width" constant="45" id="mar-Yo-p0b"/>
                             </constraints>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Button"/>
                         </button>

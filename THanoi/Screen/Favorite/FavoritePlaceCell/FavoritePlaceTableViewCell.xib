@@ -118,9 +118,12 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="addressLabel" destination="guh-YB-f0d" id="t9t-Zg-9YZ"/>
                 <outlet property="avatarPlaceImageView" destination="d1c-Zc-r2s" id="Lbk-B2-oX6"/>
+                <outlet property="avgRatingLabel" destination="wOF-Y3-8cY" id="4T2-2H-8yh"/>
                 <outlet property="containerView" destination="QbX-iq-ObR" id="Qzj-Fk-g5D"/>
                 <outlet property="deleteView" destination="BYc-3E-Rsa" id="2c1-eT-eIC"/>
+                <outlet property="nameLabel" destination="fB3-Nf-fFy" id="g0e-dr-b1M"/>
             </connections>
             <point key="canvasLocation" x="135.87786259541986" y="1.7605633802816902"/>
         </tableViewCell>

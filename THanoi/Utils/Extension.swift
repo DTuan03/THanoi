@@ -62,4 +62,10 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         self.view.endEditing(true) // Ẩn bàn phím
     }
+    
+    //Hàm bật Gesture (vuốt từ trái sang phải để quay về màn cũ, vì đã tắt bên sceneDelegate)
+    func enableSwipeBack() {
+        navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+    }
 }
+

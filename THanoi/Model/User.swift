@@ -18,3 +18,5 @@ struct UserModel {
     let calendarPlaces: [String]?
     let createdAt: Date
 }
+
+

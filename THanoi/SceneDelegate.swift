@@ -22,15 +22,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         var firstVC: UIViewController = GetStartedViewController()
         
         if defaults.bool(forKey: "isOnboarding") {
-            firstVC = SignUpViewController()
+            firstVC = TabBarViewController()
         }
         
 //        let gSVC = GetStartedViewController()
         
-//        let navigationViewControler = UINavigationController(rootViewController: gSVC)
+//        let navigationController = UINavigationController(rootViewController: firstVC)
         
-        window?.rootViewController = firstVC
+        let navController = UINavigationController(rootViewController: firstVC)
+        navController.setNavigationBarHidden(true, animated: false)
+        window?.rootViewController = navController
         window?.makeKeyAndVisible()
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

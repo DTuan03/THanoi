@@ -37,7 +37,7 @@
                         <rect key="frame" x="0.0" y="149" width="184" height="35"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tây Hổ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVk-cN-vbG">
-                                <rect key="frame" x="5" y="8.6666666666666572" width="47.666666666666664" height="18"/>
+                                <rect key="frame" x="5" y="8.6666666666666572" width="128.66666666666666" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -66,6 +66,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="5qB-5X-W3A" secondAttribute="trailing" constant="10" id="LLh-Om-b7F"/>
                             <constraint firstItem="5qB-5X-W3A" firstAttribute="centerY" secondItem="5sW-ju-ejM" secondAttribute="centerY" id="PEX-8d-bWi"/>
+                            <constraint firstItem="aVk-cN-vbG" firstAttribute="width" secondItem="5sW-ju-ejM" secondAttribute="width" multiplier="0.7" id="SAM-Lo-ogo"/>
                             <constraint firstItem="aVk-cN-vbG" firstAttribute="centerY" secondItem="5sW-ju-ejM" secondAttribute="centerY" id="ios-F5-0xb"/>
                             <constraint firstItem="aVk-cN-vbG" firstAttribute="leading" secondItem="5sW-ju-ejM" secondAttribute="leading" constant="5" id="n5s-c2-IEx"/>
                         </constraints>
