@@ -147,7 +147,7 @@
                                         <constraint firstAttribute="trailing" secondItem="OLa-Or-Y3p" secondAttribute="trailing" id="q3j-3I-BdJ"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKq-q3-he2" userLabel="TagView">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKq-q3-he2" userLabel="CategoryView">
                                     <rect key="frame" x="0.0" y="652.33333333333337" width="393" height="151.66666666666663"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theo danh mục" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hum-ad-UXt">

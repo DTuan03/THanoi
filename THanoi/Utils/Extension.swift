@@ -60,7 +60,7 @@ extension UIViewController {
     }
     
     @objc func dismissKeyboard() {
-        self.view.endEditing(true) // Ẩn bàn phím
+        self.view.endEditing(true)
     }
     
     //Hàm bật Gesture (vuốt từ trái sang phải để quay về màn cũ, vì đã tắt bên sceneDelegate)

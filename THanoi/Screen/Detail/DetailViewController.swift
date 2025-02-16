@@ -31,6 +31,16 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var weatherCollectionView: UICollectionView!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var heightScrollViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var heightReviewTableView: NSLayoutConstraint!
+    @IBOutlet weak var inforView: UIView!
+    @IBOutlet weak var descripView: UIView!
+    @IBOutlet weak var weatherView: UIView!
+    @IBOutlet weak var mapView: UIView!
+    @IBOutlet weak var writeReviewView: UIView!
+    @IBOutlet weak var reviewView: UIView!
     var topInset: Int = 0
     var placeId: String?
     var place: Place?
@@ -64,11 +74,11 @@ class DetailViewController: UIViewController {
         setupCollectionView()
         setupIndexImageView()
         setupRatingView()
-
+        
         avatarUserImageView.layer.cornerRadius = avatarUserImageView.frame.size.width / 2
         
         setupReviewTableView()
-                
+        
         let backImageViewTap = UITapGestureRecognizer(target: self, action: #selector(backScreen))
         backImageView.addGestureRecognizer(backImageViewTap)
         
@@ -113,7 +123,7 @@ class DetailViewController: UIViewController {
         ratingView.rating = 0
         ratingView.settings.starSize = 25
         ratingView.settings.emptyBorderWidth = 2
-//        ratingView.settings.
+        //        ratingView.settings.
         ratingView.didFinishTouchingCosmos = { rating in
             print("Người dùng đánh giá: \(rating) sao")
         }
@@ -125,7 +135,7 @@ class DetailViewController: UIViewController {
         
         reviewTableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "ReviewTableViewCell")
         reviewTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-
+        
     }
     
     var imageScrollTimer: Timer?
@@ -188,8 +198,21 @@ class DetailViewController: UIViewController {
         
         topInset = Int(view.safeAreaInsets.top)
         
-        heightConstraintOfBackView.constant = CGFloat(topInset + 50)
+        //        heightConstraintOfBackView.constant = CGFloat(topInset + 50)
+        
+        contentView.layoutIfNeeded()
+        reviewTableView.layoutIfNeeded()
+        heightReviewTableView.constant = reviewTableView.contentSize.height
+        
+//        heightScrollViewConstraint.constant = contentView.frame.height
     }
+    
+//        override func viewDidAppear(_ animated: Bool) {
+//            print(imageCollectionView.bounds.height + inforView.bounds.height + descripView.bounds.height + weatherView.bounds.height + mapView.bounds.height + writeReviewView.bounds.height + reviewView.bounds.height)
+//            heightScrollViewConstraint.constant = imageCollectionView.bounds.height + inforView.bounds.height + descripView.bounds.height + weatherView.bounds.height + mapView.bounds.height + writeReviewView.bounds.height + reviewView.bounds.height
+//        }
+//    
+    
 }
 
 extension DetailViewController: UIScrollViewDelegate {

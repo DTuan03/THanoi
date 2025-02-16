@@ -25,6 +25,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var placeCollectionView: UICollectionView!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var bestPlaceCollectionView: UICollectionView!
+
     // luu lai index cua item duoc chon
     var selectedItemIndex: IndexPath = IndexPath(row: 0, section: 0)
     var districtId: String = "TH1"
