@@ -7,6 +7,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         //dich chuyen textfield va textview cho phu hop khi co ban phim đè len
         IQKeyboardManager.shared.isEnabled = true
-        
+        FirebaseApp.configure()
+        PlaceDataManager.shared.loadPlaces {}
         return true
     }
     

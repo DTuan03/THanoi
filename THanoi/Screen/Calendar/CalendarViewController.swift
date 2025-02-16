@@ -88,7 +88,7 @@ class CalendarViewController: UIViewController {
         placesForSelectedDate = calendars.filter { $0.addedDate == date}
         
         //sap xep theo da di hay chua
-        placesForSelectedDate?.sort { !$0.isVisited && $1.isVisited}
+        placesForSelectedDate?.sort { !($0.isVisited ?? true) && ($1.isVisited != nil)}
         
 //        placesForSelectedDate?.sort { $0.createdAt < $1.createdAt}
         
@@ -177,12 +177,12 @@ extension CalendarViewController: UITableViewDataSource {
         }
         
         cell.onCheckmarkTapped = { [weak self] in
-            self?.placesForSelectedDate?[indexPath.row].isVisited.toggle()
+            self?.placesForSelectedDate?[indexPath.row].isVisited?.toggle()
 //            tableView.reloadRows(at: [indexPath], with: .automatic)
             tableView.reloadData()
             
             if let index = self?.calendars.firstIndex(where: { $0.placedId == selectedPlaceId}) {
-                self?.calendars[index].isVisited.toggle()
+//                self?.calendars[index].isVisited.toggle()
             }
         }
                 

@@ -117,7 +117,7 @@ extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == districtCollectionView {
             selectedItemIndex = indexPath
-            districtId = districts[indexPath.row].id ?? "null"
+            districtId = districts[indexPath.row].id
             districtCollectionView.reloadData()
             placeCollectionView.reloadData()
         } else if collectionView == placeCollectionView {
@@ -136,7 +136,6 @@ extension HomeViewController: UICollectionViewDelegate {
             let detailVC = DetailViewController()
             let placeAvgRating = places.sorted { $0.avgRating ?? 0.0 > $1.avgRating ?? 0.0 }
             detailVC.placeId = placeAvgRating[indexPath.row].id
-            print(placeAvgRating[indexPath.row].createdAt)
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }

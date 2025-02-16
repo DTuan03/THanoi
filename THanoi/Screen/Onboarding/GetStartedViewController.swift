@@ -17,7 +17,7 @@ class GetStartedViewController: UIViewController {
         super.viewDidLoad()
         checkOnboarding()
         skipButton.setTitle(NSLocalizedString("skipButton", comment: ""), for: .normal)
-//        chevron.forward
+        
         titleLabel.text = NSLocalizedString("titleGetStartedOnboarding", comment: "")
         startButton.setUpButton(title: "startButton")
         signInLabel.text = NSLocalizedString("signInLabel", comment: "")
@@ -25,15 +25,11 @@ class GetStartedViewController: UIViewController {
         let highLightSignIn = NSAttributedString().highLightText(fullText: NSLocalizedString("signInLabel", comment: ""), highLighText: NSLocalizedString("highLineSignInLabel", comment: ""), highLightColor: .color)
         signInLabel.attributedText = highLightSignIn
         
-        //Bật tương tác người dùng, có thể bật bên inspector
-//        signInLabel.isUserInteractionEnabled = true
         let signInTapGesture = UITapGestureRecognizer(target: self, action: #selector(signIn))
         signInLabel.addGestureRecognizer(signInTapGesture)
     }
     
     @objc func signIn() {
-        //TODO: Chuyen qua man hinh dang nhap
-        print("Da chuyen qua man hinh dang nhap")
         let signInVC = SignInViewController()
         signInVC.modalTransitionStyle = .crossDissolve
         signInVC.modalPresentationStyle = .fullScreen

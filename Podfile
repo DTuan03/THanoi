@@ -14,5 +14,8 @@ pod 'SwipeCellKit'
 pod 'SwiftLint'
 pod 'DropDown', '2.3.13'
 pod 'Kingfisher'
- 
+pod 'Firebase'
+pod 'FirebaseAuth'
+pod 'Firebase/Firestore'
+
 end

@@ -23,25 +23,19 @@
                 <outlet property="containerFavoriteView" destination="tYh-bC-oAR" id="zMm-VI-T2c"/>
                 <outlet property="containerView" destination="PTs-TW-JiA" id="cr2-cN-9kT"/>
                 <outlet property="contentView" destination="jJa-55-WLg" id="rw2-55-U4V"/>
-                <outlet property="descripView" destination="Oyk-EN-DO9" id="lV0-wE-is0"/>
                 <outlet property="descriptionLabel" destination="vd4-Ah-rk8" id="bFW-xY-5AC"/>
                 <outlet property="favoriteImageView" destination="fPZ-ez-6ob" id="QpT-LX-QpM"/>
                 <outlet property="heightReviewTableView" destination="S9N-4G-wws" id="M1s-hE-V9H"/>
                 <outlet property="imageCollectionView" destination="Ua7-tq-ouo" id="7ek-6U-l0F"/>
                 <outlet property="indexImageView" destination="Oqp-ZP-CGn" id="jUl-wF-SnA"/>
-                <outlet property="inforView" destination="WPP-6e-HS6" id="iaf-Xx-Fze"/>
-                <outlet property="mapView" destination="6Op-fO-CQ1" id="smp-Zr-aa4"/>
                 <outlet property="namePlaceLabel" destination="n1h-iH-W6F" id="Qrl-yJ-GBq"/>
                 <outlet property="ownerLabel" destination="X0H-9K-e3v" id="keY-dz-fDy"/>
                 <outlet property="ratingView" destination="Ki3-d9-VwW" id="mU7-BD-PRI"/>
                 <outlet property="reviewTableView" destination="VBU-xo-4FB" id="sAS-Mw-QQU"/>
-                <outlet property="reviewView" destination="YSa-He-BPd" id="H8a-ZI-xIB"/>
                 <outlet property="scrollView" destination="udo-rq-b2L" id="cZG-E5-FzE"/>
                 <outlet property="totalCommentLabel" destination="gDs-r0-pTt" id="rvq-vH-eWs"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weatherCollectionView" destination="3h6-be-70J" id="hs1-sP-Wik"/>
-                <outlet property="weatherView" destination="6Op-fO-CQ1" id="GtV-RU-WCg"/>
-                <outlet property="writeReviewView" destination="tnT-zO-RDx" id="4GI-28-6GS"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

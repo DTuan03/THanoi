@@ -16,7 +16,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var containerFavoriteView: UIView!
     @IBOutlet weak var calendarImageView: UIImageView!
     @IBOutlet weak var containerCalendarView: UIView!
-    @IBOutlet weak var heightConstraintOfBackView: NSLayoutConstraint!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageCollectionView: UICollectionView!
@@ -33,21 +32,15 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var weatherCollectionView: UICollectionView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var heightScrollViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightReviewTableView: NSLayoutConstraint!
-    @IBOutlet weak var inforView: UIView!
-    @IBOutlet weak var descripView: UIView!
-    @IBOutlet weak var weatherView: UIView!
-    @IBOutlet weak var mapView: UIView!
-    @IBOutlet weak var writeReviewView: UIView!
-    @IBOutlet weak var reviewView: UIView!
     var topInset: Int = 0
     var placeId: String?
-    var place: Place?
+    var place: PlaceModel?
     var progressViews: [UIProgressView] = []
     let weatherService = WeatherService()
     var weathers: [WeatherInfo] = []
     var day: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,8 +75,15 @@ class DetailViewController: UIViewController {
         let backImageViewTap = UITapGestureRecognizer(target: self, action: #selector(backScreen))
         backImageView.addGestureRecognizer(backImageViewTap)
         
+        let favoriteImageViewTap = UITapGestureRecognizer(target: self, action: #selector(addFavorite))
+        favoriteImageView.addGestureRecognizer(favoriteImageViewTap)
+        
         enableSwipeBack()
         addDismissKeyboard()
+    }
+    
+    @objc func addFavorite() {
+        
     }
     
     @objc func backScreen() {

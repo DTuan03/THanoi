@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignUpViewController: UIViewController {
 
@@ -24,19 +25,26 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUpWithGoogle: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //TitleLabel
+        
+        setupUI()
+        
+        let tapSignInLabel = UITapGestureRecognizer(target: self, action: #selector(signInLabelAction))
+        signInLabel.addGestureRecognizer(tapSignInLabel)
+        addDismissKeyboard()
+    }
+    
+    func setupUI() {
         titleLabel.text = NSLocalizedString("titleSignUp", comment: "")
-        //description
         descriptionLabel.text = NSLocalizedString("descriptionSignUp", comment: "")
-        //fullNameTextField
+        
         fullNameTextField.imageLeftView(image: "person", placeholder: "fullName")
         fullNameTextField.delegate = self
         fullNameTextField.tag = 1
-        //emailTextField
+        
         emailTextField.imageLeftView(image: "envelope", placeholder: "email")
         emailTextField.delegate = self
         emailTextField.tag = 2
-        //password
+        
         passWordTextField.imageLeftView(image: "lock", placeholder: "passWord")
         passWordTextField.delegate = self
         passWordTextField.tag = 3
@@ -46,12 +54,9 @@ class SignUpViewController: UIViewController {
         orSignInLabel.text = NSLocalizedString("orSignIn", comment: "")
         
         signInLabel.text = NSLocalizedString("alreadySignIn", comment: "")
+        
         let highLineSignIn = NSAttributedString().highLightText(fullText: NSLocalizedString("alreadySignIn", comment: ""), highLighText: NSLocalizedString("signIn", comment: ""), highLightColor: .color)
         signInLabel.attributedText = highLineSignIn
-        signInLabel.isUserInteractionEnabled = true
-        let tapSignInLabel = UITapGestureRecognizer(target: self, action: #selector(signInLabelAction))
-        signInLabel.addGestureRecognizer(tapSignInLabel)
-        addDismissKeyboard()
     }
     
     @objc func signInLabelAction() {
@@ -63,6 +68,7 @@ class SignUpViewController: UIViewController {
     
     
     @IBAction func signUpAction(_ sender: Any) {
+        
         if let fullName = fullNameTextField.text, !fullName.isEmpty {
             fullNameTextField.layer.borderWidth = 0
             errorFullNameLabel.isHidden = true
@@ -85,11 +91,39 @@ class SignUpViewController: UIViewController {
         }
         
         if let fullName = fullNameTextField.text, !fullName.isEmpty, isValidEmail(emailTextField), isValidPassword(passWordTextField) {
-            print("ok. dang ky")
-        } else {
-            
+            AuthManager.shared.registerUser(email: emailTextField.text!, password: passWordTextField.text!, completion: { success, error, userId in
+                if success, let userId = userId {
+//                    print(userId)
+                    UserManager.shared.saveUserData(userId: userId, name: fullName, email: self.emailTextField.text!, completion: { success, error in
+                        if success {
+                            let signInVC = SignInViewController()
+                            signInVC.modalTransitionStyle = .crossDissolve
+                            signInVC.modalPresentationStyle = .fullScreen
+                            self.present(signInVC, animated: true)
+                        } else {
+                            self.showAlert(message: error ?? "")
+                        }
+                    })
+                } else {
+                    print(String(error ?? ""))
+                    self.showAlert(message: error ?? "")
+                }
+            })
         }
     }
+    
+//    func showAlert() {
+//        let alert = UIAlertController(title: "Lỗi", message: "Xin vui lòng đăng ký lại!", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: .default))
+//        self.present(alert, animated: true)
+//    }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Thông báo", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
+    }
+
     
     func showError(textField: UITextField, content: String, errorLabel: UILabel) {
         textField.layer.borderWidth = 1.0

@@ -21,6 +21,13 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        let tapSignUp = UITapGestureRecognizer(target: self, action: #selector(signUpLabelAction))
+        orSignUp.addGestureRecognizer(tapSignUp)
+        addDismissKeyboard()
+    }
+    
+    func setupUI() {
         titleLabel.text = NSLocalizedString("titleSignIn", comment: "")
         descriptionLabel.text = NSLocalizedString("descriptionSignIn", comment: "")
         
@@ -39,9 +46,6 @@ class SignInViewController: UIViewController {
         let highLineSignUp = NSAttributedString().highLightText(fullText: NSLocalizedString("notSignUp", comment: ""), highLighText: NSLocalizedString("signUp", comment: ""), highLightColor: .color)
         orSignUp.attributedText = highLineSignUp
         orSignUp.isUserInteractionEnabled = true
-        let tapSignUp = UITapGestureRecognizer(target: self, action: #selector(signUpLabelAction))
-        orSignUp.addGestureRecognizer(tapSignUp)
-        addDismissKeyboard()
     }
     
     @objc func signUpLabelAction() {
@@ -67,15 +71,17 @@ class SignInViewController: UIViewController {
         }
         
         if isValidEmail(emailTextField), isValidPassword(passwordTextField) {
-            print("ok. dang nhap")
-            let tabbarVC = TabBarViewController()
-            tabbarVC.modalTransitionStyle = .crossDissolve
-            tabbarVC.modalPresentationStyle = .fullScreen
-            present(tabbarVC, animated: true)
-        } else {
-            
+            AuthManager.shared.loginUser(email: emailTextField.text!, password: passwordTextField.text!, completion: { result, error, userId in
+                if result {
+                    let userIdDefault = UserDefaults.standard
+                    userIdDefault.set(userId, forKey: "userId")
+                    let tabbarVC = TabBarViewController()
+                    tabbarVC.modalTransitionStyle = .crossDissolve
+                    tabbarVC.modalPresentationStyle = .fullScreen
+                    self.present(tabbarVC, animated: true)
+                }
+            })
         }
-        
     }
     
     func showError(textField: UITextField, content: String, errorLabel: UILabel) {

@@ -54,7 +54,6 @@ class OnboardingViewController: UIViewController {
         for (index, onboarding) in onboardingModel.enumerated() {
             let contentView = UIView()
             contentView.translatesAutoresizingMaskIntoConstraints = false
-            //contentView.frame = CGRect(x: scrollView.frame.width * CGFloat(index), y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
             scrollView.addSubview(contentView)
             
             NSLayoutConstraint.activate([
@@ -69,7 +68,6 @@ class OnboardingViewController: UIViewController {
             image.image = UIImage(named: onboarding.image)
             image.contentMode = .scaleAspectFill
             image.clipsToBounds = true
-            //image.frame = CGRect(x: scrollView.frame.width * CGFloat(index), y: 0, width: scrollView.frame.width, height: scrollView.frame.height * 0.6)
             contentView.addSubview(image)
             
             NSLayoutConstraint.activate([
@@ -87,11 +85,7 @@ class OnboardingViewController: UIViewController {
             title.textAlignment = .center
             let highlLightTitle = NSAttributedString().highLightText(fullText: onboarding.title, highLighText: onboarding.highLight, highLightColor: .color)
             title.attributedText = highlLightTitle
-//            let titleWidth = scrollView.frame.width - 40
-//            let titleX = (scrollView.frame.width - titleWidth) / 2
-            //            title.frame = CGRect(x: titleX + scrollView.frame.width * CGFloat(index), y: 0, width: titleWidth, height: 0)
-            // Sử dụng sizeToFit để tự động điều chỉnh chiều cao của title theo nội dung
-            //            title.sizeToFit()
+
             
             contentView.addSubview(title)
             NSLayoutConstraint.activate([
@@ -114,7 +108,6 @@ class OnboardingViewController: UIViewController {
                 description.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
                 description.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 20),
             ])
-            //            description.frame = CGRect(x: 20, y: title.frame.maxY + 20, width: contentView.frame.width - 40, height: contentView.frame.height - title.frame.maxY - 40)
         }
     }
 
