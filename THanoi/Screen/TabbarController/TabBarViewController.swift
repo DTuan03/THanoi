@@ -35,12 +35,25 @@ class TabBarViewController: UIViewController {
         tabBarView.layer.borderWidth = 1
         tabBarView.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
         tabBarView.layer.masksToBounds = true
-                
+        
+        let homeVC = HomeViewController()
+        let homeNav = UINavigationController(rootViewController: homeVC)
+        homeNav.setNavigationBarHidden( true, animated: true)
+        let calendarVC = CalendarViewController(calendars: calendars)
+        let calendarNav = UINavigationController(rootViewController: calendarVC)
+        calendarNav.setNavigationBarHidden( true, animated: true)
+        let favoriteVC = FavoriteViewController(favorites: favorites)
+        let favoriteNav = UINavigationController(rootViewController: favoriteVC)
+        favoriteNav.setNavigationBarHidden( true, animated: true)
+        let accountVC = AccountViewController()
+        let accountNav = UINavigationController(rootViewController: accountVC)
+        accountNav.setNavigationBarHidden( true, animated: true)
+        
         childVCs = [
-            HomeViewController(),
-            CalendarViewController(calendars: calendars),
-            FavoriteViewController(favorites: favorites),
-            AccountViewController()
+            homeNav,
+            calendarNav,
+            favoriteNav,
+            accountNav
         ]
         
         imageViews = [homeImageView, calendarImageView, favoriteImageView, accountImageView]
@@ -82,7 +95,6 @@ class TabBarViewController: UIViewController {
             
         }
         
-        // Them moi vC
         let newVC = childVCs[index]
         addChild(newVC)
         contentView.addSubview(newVC.view)
@@ -105,5 +117,13 @@ class TabBarViewController: UIViewController {
         labels[index].font = UIFont.boldSystemFont(ofSize: 13)
         labels[index].textColor = UIColor.color
         imageViews[index].tintColor = UIColor.color
+    }
+    
+    func hideTabBar() {
+        tabBarView.isHidden = true
+    }
+    
+    func showTabBar() {
+        tabBarView.isHidden = false
     }
 }

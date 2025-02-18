@@ -15,6 +15,12 @@ class OnboardingViewController: UIViewController {
     
     let width = UIScreen.main.bounds.size.width
     
+    var onboardingModel: [OnboardingModel] = [
+        OnboardingModel(title: NSLocalizedString("titleContinueOnboarding1", comment: ""), highLight: NSLocalizedString("highLineTitleContinueOnboarding1", comment: ""), description: NSLocalizedString("descriptionLabel1", comment: ""), image: "onboarding1", numberPageControl: 0),
+        OnboardingModel(title: NSLocalizedString("titleContinueOnboarding2", comment: ""), highLight: NSLocalizedString("highLineTitleContinueOnboarding2", comment: ""), description: NSLocalizedString("descriptionLabel2", comment: ""), image: "onboarding2", numberPageControl: 1),
+        OnboardingModel(title: NSLocalizedString("titleContinueOnboarding3", comment: ""), highLight: NSLocalizedString("highLineTitleContinueOnboarding3", comment: ""), description: NSLocalizedString("descriptionLabel3", comment: ""), image: "onboarding3", numberPageControl: 2)
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         continueButton.setUpButton(title: "continueButton")
@@ -38,11 +44,6 @@ class OnboardingViewController: UIViewController {
             present(signUpVC, animated: true, completion: nil)
         }
     }
-    var onboardingModel: [OnboardingModel] = [
-        OnboardingModel(title: NSLocalizedString("titleContinueOnboarding1", comment: ""), highLight: NSLocalizedString("highLineTitleContinueOnboarding1", comment: ""), description: NSLocalizedString("descriptionLabel1", comment: ""), image: "onboarding1", numberPageControl: 0),
-        OnboardingModel(title: NSLocalizedString("titleContinueOnboarding2", comment: ""), highLight: NSLocalizedString("highLineTitleContinueOnboarding2", comment: ""), description: NSLocalizedString("descriptionLabel2", comment: ""), image: "onboarding2", numberPageControl: 1),
-        OnboardingModel(title: NSLocalizedString("titleContinueOnboarding3", comment: ""), highLight: NSLocalizedString("highLineTitleContinueOnboarding3", comment: ""), description: NSLocalizedString("descriptionLabel3", comment: ""), image: "onboarding3", numberPageControl: 2)
-    ]
     
     func addContentToScrollView() {
         scrollView.frame.size.width = width

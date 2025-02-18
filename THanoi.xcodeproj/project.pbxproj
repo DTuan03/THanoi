@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09B8E910C22FB0B91FDEB0C4 /* Pods_THanoi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8366BFC949EA944D9B1807B5 /* Pods_THanoi.framework */; };
+		696419CD138F6DAA9C2FC7DC /* Pods_THanoi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E82728239FF65D171DACA284 /* Pods_THanoi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		097BE69B49A26F0F7A657579 /* Pods-THanoi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-THanoi.release.xcconfig"; path = "Target Support Files/Pods-THanoi/Pods-THanoi.release.xcconfig"; sourceTree = "<group>"; };
 		17C761982D05D044002C4619 /* THanoi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = THanoi.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		567349D02C217C0EDEE43E78 /* Pods-THanoi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-THanoi.release.xcconfig"; path = "Target Support Files/Pods-THanoi/Pods-THanoi.release.xcconfig"; sourceTree = "<group>"; };
-		8366BFC949EA944D9B1807B5 /* Pods_THanoi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_THanoi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B823AE44F0000A7B13A0DFEA /* Pods-THanoi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-THanoi.debug.xcconfig"; path = "Target Support Files/Pods-THanoi/Pods-THanoi.debug.xcconfig"; sourceTree = "<group>"; };
+		6CA3BC8EADA4DBAFDC9A8D4F /* Pods-THanoi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-THanoi.debug.xcconfig"; path = "Target Support Files/Pods-THanoi/Pods-THanoi.debug.xcconfig"; sourceTree = "<group>"; };
+		E82728239FF65D171DACA284 /* Pods_THanoi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_THanoi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09B8E910C22FB0B91FDEB0C4 /* Pods_THanoi.framework in Frameworks */,
+				696419CD138F6DAA9C2FC7DC /* Pods_THanoi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,7 +56,7 @@
 				17C7619A2D05D044002C4619 /* THanoi */,
 				17C761992D05D044002C4619 /* Products */,
 				6ADFBB1B999BD94F15AD83E0 /* Pods */,
-				D0FAD39AB4874BCD38BC7E25 /* Frameworks */,
+				AFA9CD36C55D78DABAC7B5C6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,16 +71,16 @@
 		6ADFBB1B999BD94F15AD83E0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B823AE44F0000A7B13A0DFEA /* Pods-THanoi.debug.xcconfig */,
-				567349D02C217C0EDEE43E78 /* Pods-THanoi.release.xcconfig */,
+				6CA3BC8EADA4DBAFDC9A8D4F /* Pods-THanoi.debug.xcconfig */,
+				097BE69B49A26F0F7A657579 /* Pods-THanoi.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		D0FAD39AB4874BCD38BC7E25 /* Frameworks */ = {
+		AFA9CD36C55D78DABAC7B5C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8366BFC949EA944D9B1807B5 /* Pods_THanoi.framework */,
+				E82728239FF65D171DACA284 /* Pods_THanoi.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -92,11 +92,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17C761AB2D05D045002C4619 /* Build configuration list for PBXNativeTarget "THanoi" */;
 			buildPhases = (
-				4594D21162B39DC5A6B7ED08 /* [CP] Check Pods Manifest.lock */,
+				DC440A15B43A359CB105F879 /* [CP] Check Pods Manifest.lock */,
 				17C761942D05D044002C4619 /* Sources */,
 				17C761952D05D044002C4619 /* Frameworks */,
 				17C761962D05D044002C4619 /* Resources */,
-				15950E89B9D0CDD87897F866 /* [CP] Embed Pods Frameworks */,
+				C11FC5F9E7B8801B2B28C5A4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -157,7 +157,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		15950E89B9D0CDD87897F866 /* [CP] Embed Pods Frameworks */ = {
+		C11FC5F9E7B8801B2B28C5A4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -174,7 +174,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-THanoi/Pods-THanoi-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4594D21162B39DC5A6B7ED08 /* [CP] Check Pods Manifest.lock */ = {
+		DC440A15B43A359CB105F879 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -211,7 +211,7 @@
 /* Begin XCBuildConfiguration section */
 		17C761AC2D05D045002C4619 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B823AE44F0000A7B13A0DFEA /* Pods-THanoi.debug.xcconfig */;
+			baseConfigurationReference = 6CA3BC8EADA4DBAFDC9A8D4F /* Pods-THanoi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -225,7 +225,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -241,7 +241,7 @@
 		};
 		17C761AD2D05D045002C4619 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 567349D02C217C0EDEE43E78 /* Pods-THanoi.release.xcconfig */;
+			baseConfigurationReference = 097BE69B49A26F0F7A657579 /* Pods-THanoi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -255,7 +255,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

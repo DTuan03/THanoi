@@ -33,6 +33,7 @@ class SignInViewController: UIViewController {
         
         emailTextField.imageLeftView(image: "envelope", placeholder: "email")
         passwordTextField.imageLeftView(image: "lock", placeholder: "passWord")
+        passwordTextField.imageRightView(image: "eyebrow")
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -56,54 +57,74 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func signInAction(_ sender: Any) {
-        if isValidEmail(emailTextField) {
-            emailTextField.layer.borderWidth = 0
-            errorEmailLabel.isHidden = true
-        } else {
-            showError(textField: emailTextField, content: "isEmail", errorLabel: errorEmailLabel)
+        if !isValidEmail(emailTextField.text) {
+            showError(textField: emailTextField, content: "isEmail", errorLabel: errorEmailLabel, isError: true)
+            return
+        }
+
+        if !isValidPassword(passwordTextField.text) {
+            showError(textField: passwordTextField, content: "isPassword", errorLabel: errorPasswordLabel, isError: true)
+            return
         }
         
-        if isValidPassword(passwordTextField) {
-            passwordTextField.layer.borderWidth = 0
-            errorPasswordLabel.isHidden = true
-        } else {
-            showError(textField: passwordTextField, content: "isPassword", errorLabel: errorPasswordLabel)
-        }
+        guard let email = emailTextField.text, !email.isEmpty else { return }
+        guard let password = passwordTextField.text, !password.isEmpty else { return }
+
+        emailTextField.layer.borderWidth = 0
+        errorEmailLabel.isHidden = true
+        passwordTextField.layer.borderWidth = 0
+        errorPasswordLabel.isHidden = true
         
-        if isValidEmail(emailTextField), isValidPassword(passwordTextField) {
-            AuthManager.shared.loginUser(email: emailTextField.text!, password: passwordTextField.text!, completion: { result, error, userId in
-                if result {
-                    let userIdDefault = UserDefaults.standard
-                    userIdDefault.set(userId, forKey: "userId")
-                    let tabbarVC = TabBarViewController()
-                    tabbarVC.modalTransitionStyle = .crossDissolve
-                    tabbarVC.modalPresentationStyle = .fullScreen
-                    self.present(tabbarVC, animated: true)
+        DispatchQueue.global(qos: .userInitiated).async {
+            AuthManager.shared.loginUser(email: email, password: password) { result, error, userId in
+                DispatchQueue.main.async {
+                    if result {
+                        UserDefaults.standard.set(userId, forKey: "userId")
+                        UserDefaults.standard.set(true, forKey: "isSignIn")
+                        
+                        let tabbarVC = TabBarViewController()
+                        tabbarVC.modalTransitionStyle = .crossDissolve
+                        tabbarVC.modalPresentationStyle = .fullScreen
+                        self.present(tabbarVC, animated: true)
+                    } else {
+                        self.showAlert()
+                    }
                 }
-            })
+            }
         }
     }
-    
-    func showError(textField: UITextField, content: String, errorLabel: UILabel) {
-        textField.layer.borderWidth = 1.0
-        textField.layer.borderColor = UIColor.color.cgColor
-        errorLabel.text = NSLocalizedString(content, comment: "")
+                                         
+    func showAlert(message: String = "Kiểm tra lại tài khoản, mật khẩu") {
+        let alert = UIAlertController(title: "Thông báo", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
     }
     
-    func isValidEmail(_ emailTextField: UITextField) -> Bool {
-        let email = emailTextField.text
+    func showError(textField: UITextField, content: String, errorLabel: UILabel, isError: Bool) {
+        if isError {
+            textField.layer.borderWidth = 1.0
+            textField.layer.borderColor = UIColor.red.cgColor
+            errorLabel.text = NSLocalizedString(content, comment: "")
+            errorLabel.isHidden = false
+        } else {
+            textField.layer.borderWidth = 0
+            errorLabel.isHidden = true
+        }
+    }
+
+    
+    func isValidEmail(_ email: String?) -> Bool {
+        guard let email = email else { return false }
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        return emailPredicate.evaluate(with: email)
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
     }
-    
-    func isValidPassword(_ passwordTextField: UITextField) -> Bool {
-        // Điều kiện: ít nhất 8 ký tự, 1 chữ hoa, 1 số
-        let password = passwordTextField.text
+
+    func isValidPassword(_ password: String?) -> Bool {
+        guard let password = password else { return false }
         let passwordRegex = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$"
-        let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
-        return passwordPredicate.evaluate(with: password)
+        return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
     }
+
     
 }
 

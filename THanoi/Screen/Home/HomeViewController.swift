@@ -29,8 +29,16 @@ class HomeViewController: UIViewController {
     // luu lai index cua item duoc chon
     var selectedItemIndex: IndexPath = IndexPath(row: 0, section: 0)
     var districtId: String = "TH1"
+    let places: [PlaceModel] = PlaceDataManager.shared.places
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        PlaceDataManager.shared.loadPlaces {
+            DispatchQueue.main.async {
+                self.placeCollectionView.reloadData()
+            }
+        }
+        
         setUpHeader()
         
         setupCollectionView(districtCollectionView, cellIdentifier: "NamePlaceCollectionViewCell")
@@ -50,17 +58,24 @@ class HomeViewController: UIViewController {
     }
     
     @objc func showSearchVC() {
+        (self.navigationController?.parent as? TabBarViewController)?.hideTabBar()
         let searchVC = RecentSearchViewController()
         navigationController?.pushViewController(searchVC, animated: true)
     }
     
     @objc func showFilterVC() {
+        (self.navigationController?.parent as? TabBarViewController)?.hideTabBar()
         let filterVC = FilterViewController()
         navigationController?.pushViewController(filterVC, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         notificationView.layer.cornerRadius = notificationView.frame.size.height / 2
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        (self.navigationController?.parent as? TabBarViewController)?.showTabBar()
     }
     
     func setUpHeader() {
@@ -125,16 +140,16 @@ extension HomeViewController: UICollectionViewDelegate {
             let placeDistrict = places.filter { place in
                 return place.districtId == districtId
             }
+            
+            (self.navigationController?.parent as? TabBarViewController)?.hideTabBar()
             detailVC.placeId = placeDistrict[indexPath.row].id
             navigationController?.pushViewController(detailVC, animated: true)
-//            detailVC.modalTransitionStyle = .crossDissolve
-//            detailVC.modalPresentationStyle = .fullScreen
-//            present(detailVC, animated: true)
         } else if collectionView == categoryCollectionView {
             
         } else if collectionView == bestPlaceCollectionView {
             let detailVC = DetailViewController()
             let placeAvgRating = places.sorted { $0.avgRating ?? 0.0 > $1.avgRating ?? 0.0 }
+            (self.navigationController?.parent as? TabBarViewController)?.hideTabBar()
             detailVC.placeId = placeAvgRating[indexPath.row].id
             navigationController?.pushViewController(detailVC, animated: true)
         }

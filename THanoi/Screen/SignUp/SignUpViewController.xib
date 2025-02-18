@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_3" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,11 +17,11 @@
                 <outlet property="errorPasswordLabel" destination="GWL-v0-CmX" id="PXZ-dx-aeE"/>
                 <outlet property="fullNameTextField" destination="hop-YS-YrB" id="zcX-kR-1EK"/>
                 <outlet property="orSignInLabel" destination="f5A-JF-kUx" id="wcn-4g-Pth"/>
-                <outlet property="passWordTextField" destination="lMy-GF-FsE" id="JHb-DC-cOd"/>
+                <outlet property="passwordTextField" destination="lMy-GF-FsE" id="JHb-DC-cOd"/>
                 <outlet property="signInLabel" destination="b7U-TE-Ylw" id="5mN-31-f2v"/>
                 <outlet property="signUpButton" destination="VFa-qA-bsn" id="Kzs-Ad-EjJ"/>
-                <outlet property="signUpWithApple" destination="FJE-NI-yXq" id="rQj-F6-JrG"/>
-                <outlet property="signUpWithGoogle" destination="Ufx-Oh-R2n" id="afu-Oz-AwZ"/>
+                <outlet property="signUpWithAppleButton" destination="FJE-NI-yXq" id="rQj-F6-JrG"/>
+                <outlet property="signUpWithGoogleButton" destination="Ufx-Oh-R2n" id="afu-Oz-AwZ"/>
                 <outlet property="titleLabel" destination="MDx-Os-9lD" id="7ul-YZ-Fnf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

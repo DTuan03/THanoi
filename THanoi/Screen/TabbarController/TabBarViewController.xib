@@ -34,7 +34,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lwm-db-9yW" userLabel="ContentView">
-                    <rect key="frame" x="0.0" y="62" width="440" height="894"/>
+                    <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="meZ-g6-WyM" userLabel="TabBarView">
@@ -129,7 +129,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Fep-A6-bpm">
-                                            <rect key="frame" x="37" y="11.333333333333334" width="31" height="28.000000000000007"/>
+                                            <rect key="frame" x="37" y="11.333333333333334" width="31" height="28"/>
                                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Fep-A6-bpm" secondAttribute="height" multiplier="1:1" id="1nY-A4-JzA"/>
@@ -183,7 +183,7 @@
                 <constraint firstItem="Lwm-db-9yW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="EKq-xP-rEw"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="meZ-g6-WyM" secondAttribute="bottom" constant="5" id="GQ9-77-xRn"/>
                 <constraint firstAttribute="bottom" secondItem="Lwm-db-9yW" secondAttribute="bottom" id="PMX-NP-bAl"/>
-                <constraint firstItem="Lwm-db-9yW" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="YF8-gR-oFu"/>
+                <constraint firstItem="Lwm-db-9yW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YF8-gR-oFu"/>
                 <constraint firstItem="zOQ-SQ-QKG" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.07" id="bo7-nm-r8n"/>
                 <constraint firstItem="40E-vh-PRM" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.07" id="eQd-8n-G3U"/>
                 <constraint firstItem="0UM-bm-ORx" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.07" id="fLl-lb-X73"/>

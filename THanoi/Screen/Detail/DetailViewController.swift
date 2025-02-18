@@ -22,6 +22,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var indexImageView: UIPageControl!
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var avatarUserImageView: UIImageView!
+    @IBOutlet weak var reviewTextView: UITextView!
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var namePlaceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -34,18 +35,59 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var heightReviewTableView: NSLayoutConstraint!
     var topInset: Int = 0
-    var placeId: String?
+    var placeId: String!
     var place: PlaceModel?
     var progressViews: [UIProgressView] = []
     let weatherService = WeatherService()
     var weathers: [WeatherInfo] = []
     var day: [String] = []
+    let places: [PlaceModel] = PlaceDataManager.shared.places
+    var favoritePlaceId: [String] = FavoriteDataManager.shared.favoritePlaceId
+    var isFavorite: String = ""
+    let userId = UserDefaults.standard.string(forKey: "userId")!
+    var reviews = ReviewdDataManager.shared.reviews
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        setupData()
+        setupAction()
         
-        setupContainerBackView()
+        simulate()
+        getWeather()
         
+        getNextThreeDaysOfWeek()
+        
+        setupScrollView()
+        
+        setupCollectionView()
+        setupIndexImageView()
+        setupRatingView()
+                
+        setupReviewTableView()
+        
+        enableSwipeBack()
+        
+        addDismissKeyboard()
+    }
+    private func setupUI() {
+        containerBackView.layer.cornerRadius = containerBackView.frame.width / 2
+        containerFavoriteView.layer.cornerRadius = containerFavoriteView.frame.width / 2
+        containerCalendarView.layer.cornerRadius = containerCalendarView.frame.width / 2
+        
+        avatarUserImageView.layer.cornerRadius = avatarUserImageView.frame.size.width / 2
+        
+        reviewTextView.layer.cornerRadius = 10
+        reviewTextView.layer.borderWidth = 1
+        reviewTextView.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    private func setupScrollView() {
+        scrollView.delegate = self
+        scrollView.bounces = false
+    }
+    
+    private func setupData() {
         if let placeId = placeId, let tempPlace = places.first(where: { $0.id == placeId }) {
             place = tempPlace
             namePlaceLabel.text = place?.name
@@ -56,34 +98,108 @@ class DetailViewController: UIViewController {
             descriptionLabel.text = place?.description
         }
         
-        simulate()
-        getWeather()
+        isFavorite = favoritePlaceId.first(where: { $0 == placeId}) ?? ""
         
-        getNextThreeDaysOfWeek()
-        
-        scrollView.delegate = self
-        scrollView.bounces = false
-        
-        setupCollectionView()
-        setupIndexImageView()
-        setupRatingView()
-        
-        avatarUserImageView.layer.cornerRadius = avatarUserImageView.frame.size.width / 2
-        
-        setupReviewTableView()
-        
+        if let _ = placeId, !isFavorite.isEmpty {
+            favoriteImageView.image = UIImage(systemName: "heart.fill")
+            favoriteImageView.tintColor = .red
+        }
+    }
+    
+    private func setupAction() {
         let backImageViewTap = UITapGestureRecognizer(target: self, action: #selector(backScreen))
         backImageView.addGestureRecognizer(backImageViewTap)
         
         let favoriteImageViewTap = UITapGestureRecognizer(target: self, action: #selector(addFavorite))
         favoriteImageView.addGestureRecognizer(favoriteImageViewTap)
         
-        enableSwipeBack()
-        addDismissKeyboard()
+        let calendarImageViewTap = UITapGestureRecognizer(target: self, action: #selector(addCalendar))
+        calendarImageView.addGestureRecognizer(calendarImageViewTap)
+    }
+    
+    @IBAction func submitReview(_ sender: Any) {
+        guard ratingView.rating > 0 else {
+            showAlert(title: "Thông báo", message: "Hãy chọn số sao phù hợp bằng cách giữ và kéo!")
+            return
+        }
+        
+        let comment = reviewTextView.text ?? ""
+        var ratingValue = 0.0
+        let currentDate = ""
+        ratingView.didFinishTouchingCosmos = { rating in
+            ratingValue = rating
+        }
+        
+        UserManager.shared.featchUser(userId: userId, completion: { user in
+            ReviewdDataManager.shared.addReview(userId: user.userId, userName: user.name, placedId: self.placeId, avatarUser: user.avatar ?? "", rating: Int(ratingValue), comment: comment, timestamp: currentDate, completion: { error in
+                if error {
+                    print("Loi")
+                } else {
+                    print("Thanh cong")
+                }
+            })
+        })
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(alert, animated: true)
     }
     
     @objc func addFavorite() {
+        let isAdding = isFavorite.isEmpty
+        isFavorite = isAdding ? placeId : ""
         
+        favoriteImageView.image = UIImage(systemName: isAdding ? "heart.fill" : "heart")
+        favoriteImageView.tintColor = isAdding ? .red : .black
+        
+        if isAdding {
+            FavoriteDataManager.shared.updateFavoritePlace(userId: userId, placedId: placeId) { self.favoritePlaceId = $0 }
+        } else {
+            FavoriteDataManager.shared.deleteFavoritePlace(userId: userId, placedId: placeId) { self.favoritePlaceId = $0 }
+        }
+    }
+    
+    @objc func addCalendar() {
+        let alert = UIAlertController(title: "Chọn ngày dự định đi", message: nil, preferredStyle: .actionSheet)
+        
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        } else {
+            // Fallback on earlier versions
+        }
+        datePicker.minimumDate = Date()
+        
+        alert.view.addSubview(datePicker)
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        alert.view.heightAnchor.constraint(equalToConstant: 350).isActive = true
+        NSLayoutConstraint.activate([
+            datePicker.leadingAnchor.constraint(equalTo: alert.view.leadingAnchor),
+            datePicker.trailingAnchor.constraint(equalTo: alert.view.trailingAnchor),
+            datePicker.topAnchor.constraint(equalTo: alert.view.topAnchor, constant: 40),
+            datePicker.heightAnchor.constraint(equalToConstant: 200)
+        ])
+        
+        let okAction = UIAlertAction(title: "Chọn", style: .default) { _ in
+            let formattedDate = datePicker.date.toVietnameseDateString()
+
+            CalendarDataManager.shared.addCalendar(userId: self.userId, placeId: self.placeId, scheduledDate: formattedDate, completion: { success in
+                if success {
+                    print("Da them")
+                } else {
+                    print("Loi")
+                }
+                
+            })
+        }
+        let cancelAction = UIAlertAction(title: "Hủy", style: .cancel, handler: nil)
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
     }
     
     @objc func backScreen() {
@@ -120,13 +236,10 @@ class DetailViewController: UIViewController {
     func setupRatingView() {
         ratingView.settings.totalStars = 5
         ratingView.settings.fillMode = .full
-        ratingView.rating = 0
+        ratingView.rating = 1
         ratingView.settings.starSize = 25
         ratingView.settings.emptyBorderWidth = 2
         //        ratingView.settings.
-        ratingView.didFinishTouchingCosmos = { rating in
-            print("Người dùng đánh giá: \(rating) sao")
-        }
     }
     
     func setupReviewTableView() {
@@ -165,18 +278,19 @@ class DetailViewController: UIViewController {
     
     func getWeather() {
         weatherService.fetchWeather(lat: 21.0285, lon: 105.8544) { weatherList in
-            if let weatherList = weatherList {
-                
-                self.weathers = weatherList
-                self.weatherCollectionView.reloadData() // Cập nhật UI
-                
-            } else {
-                print("Không thể lấy dữ liệu thời tiết.")
+            DispatchQueue.main.async {
+                if let weatherList = weatherList {
+                    self.weathers = weatherList
+                    self.weatherCollectionView.reloadData()
+                    
+                } else {
+                    print("Không thể lấy dữ liệu thời tiết.")
+                }
             }
         }
     }
     
-    func getNextThreeDaysOfWeek() {
+    private func getNextThreeDaysOfWeek() {
         var daysOfWeek: [String] = []
         let calendar = NSCalendar.current
         let dateFormatter = DateFormatter()
@@ -197,22 +311,10 @@ class DetailViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         topInset = Int(view.safeAreaInsets.top)
-        
-        //        heightConstraintOfBackView.constant = CGFloat(topInset + 50)
-        
         contentView.layoutIfNeeded()
         reviewTableView.layoutIfNeeded()
         heightReviewTableView.constant = reviewTableView.contentSize.height
-        
-//        heightScrollViewConstraint.constant = contentView.frame.height
     }
-    
-//        override func viewDidAppear(_ animated: Bool) {
-//            print(imageCollectionView.bounds.height + inforView.bounds.height + descripView.bounds.height + weatherView.bounds.height + mapView.bounds.height + writeReviewView.bounds.height + reviewView.bounds.height)
-//            heightScrollViewConstraint.constant = imageCollectionView.bounds.height + inforView.bounds.height + descripView.bounds.height + weatherView.bounds.height + mapView.bounds.height + writeReviewView.bounds.height + reviewView.bounds.height
-//        }
-//    
-    
 }
 
 extension DetailViewController: UIScrollViewDelegate {
@@ -224,7 +326,6 @@ extension DetailViewController: UIScrollViewDelegate {
             
             let alpha = min(1, max(0, offsetY / maxOffset))
             backView.alpha = alpha
-            //            print("offsetY: \(offsetY), maxOffset: \(maxOffset), alpha: \(alpha)")
         }
     }
 }
@@ -248,8 +349,6 @@ extension DetailViewController: UICollectionViewDataSource {
         if collectionView == imageCollectionView {
             let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as! ImageCollectionViewCell
             
-            //        cell.image.image = UIImage(named: "Test")
-            //        //        cell.image.layer.cornerRadius = 20
             let realIndex = indexPath.row % (place?.images!.count ?? 0)
             let urlImage = URL(string: place?.images?[realIndex] ?? "")
             imageCell.image.kf.setImage(with: urlImage)
@@ -258,9 +357,7 @@ extension DetailViewController: UICollectionViewDataSource {
             cell = imageCell
         } else {
             let weatherCell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherCollectionViewCell", for: indexPath) as! WeatherCollectionViewCell
-            
-            //            let date = Date(timeIntervalSince1970: self.weathers[indexPath.row].dt)
-            //            print(date)
+
             weatherCell.dayLabel.text = self.day[indexPath.row]
             let tempMin = (self.weathers[indexPath.row].main.temp_min * 10).rounded() / 10
             let tempMax = (self.weathers[indexPath.row].main.temp_max * 10).rounded() / 10

@@ -5,6 +5,7 @@
 //  Created by Tuấn on 17/2/25.
 //
 
+import Foundation
 import FirebaseFirestore
 
 class FirebaseService {
@@ -27,7 +28,6 @@ class FirebaseService {
                     latitude = coordinates[0]
                     longitude = coordinates[1]
                 }
-                
                 return PlaceModel(
                     id: data["id"] as? String ?? "",
                     name: data["name"] as? String ?? "Unknown",
@@ -49,6 +49,96 @@ class FirebaseService {
         }
     }
     
+    func updateFavovite(userId: String, favoritePlaceId: String, completion: @escaping (Bool) -> Void) {
+        let ref = db.collection("users").document(userId)
+        ref.updateData(["favorites": FieldValue.arrayUnion([favoritePlaceId])]) { error in
+            if let error = error {
+                print("Ối rồi ôi, lỗi rồi: \(error)")
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
     
+    func deleteFavorite(userId: String, favoritePlaceId: String, completion: @escaping (Bool) -> Void) {
+        let ref = db.collection("users").document(userId)
+        ref.updateData(["favorites": FieldValue.arrayRemove([favoritePlaceId])]) { error in
+            if let error = error {
+                print("Ối rồi ôi, lỗi rồi: \(error)")
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
     
+    func fetchUsers(userId: String, completion: @escaping ([String : Any]) -> Void) {
+        db.collection("users").document(userId).getDocument { document, error in
+            guard let document = document, document.exists, error == nil else {
+                completion([:])
+                return
+            }
+            
+            let data = document.data() ?? [:]
+            
+            completion(data)
+        }
+    }
+    
+    func addCalendar(userId: String, calendar: [String: Any], completion: @escaping (Bool) -> Void) {
+       let ref = db.collection("users").document(userId)
+        ref.updateData(["calendars": FieldValue.arrayUnion([calendar])]) { error in
+            if let error = error {
+                print("Ối rồi ôi, lỗi rồi: \(error)")
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
+    
+
+    
+    func addReview(userId: String, userName: String, placedId: String, avatarUser: String, rating: Int, comment: String, timestamp: String, completion: @escaping (Bool) -> Void) {
+        let reviewData: [String: Any] = [
+            "userId": userId,
+            "userName": userName,
+            "placedId": placedId,
+            "avatarUser": avatarUser,
+            "rating": avatarUser,
+            "comment": comment,
+            "timestamp": timestamp
+        ]
+        db.collection("reviews").document(placedId).collection("reiviews").addDocument(data: reviewData) { error in
+            if let error = error {
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
+    
+    func fetchReview(placeId: String, completion: @escaping ([Review]) -> Void) {
+        db.collection("reviews").document(placeId).collection("reviews").getDocuments { document, error in
+            if let error = error {
+                print("Loi: \(error.localizedDescription)")
+                completion([])
+            } else {
+                var reviews: [Review] = []
+                for document in document!.documents {
+                    let data = document.data()
+                    let userName = data["userName"] as? String ?? "Người dùng THanoi"
+                    let avatarUser = data["avatarUser"] as? String ?? ""
+                    let rating = data["rating"] as? Int ?? 0
+                    let comment = data["comment"] as? String ?? ""
+                    let timestamp = data["timestamp"] as? String ?? ""
+                    
+                    let review = Review(userName: userName, avatarUser: avatarUser, rating: rating, comment: comment, timestamp: timestamp)
+                    reviews.append(review)
+                }
+                completion(reviews)
+            }
+        }
+    }
 }
