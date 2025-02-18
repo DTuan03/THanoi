@@ -17,8 +17,9 @@ class FavoriteDataManager {
     func loadFavoritePlaceId(userId: String, completion: @escaping([String]) -> Void) {
         
         FirebaseService.shared.fetchUsers(userId: userId, completion: { data in
-            let data = data
-            self.favoritePlaceId = data["favorites"] as? [String] ?? []
+            let favoritePlaces = data["favorites"] as? [String] ?? []
+            self.favoritePlaceId = favoritePlaces
+            completion(favoritePlaces)
         })
     }
     

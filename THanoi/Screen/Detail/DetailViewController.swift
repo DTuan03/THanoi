@@ -41,16 +41,34 @@ class DetailViewController: UIViewController {
     let weatherService = WeatherService()
     var weathers: [WeatherInfo] = []
     var day: [String] = []
-    let places: [PlaceModel] = PlaceDataManager.shared.places
-    var favoritePlaceId: [String] = FavoriteDataManager.shared.favoritePlaceId
-    var isFavorite: String = ""
     let userId = UserDefaults.standard.string(forKey: "userId")!
+    let places: [PlaceModel] = PlaceDataManager.shared.places
+    var favoritePlaceId: [String] = []
+    var isFavorite: String = ""
     var reviews = ReviewdDataManager.shared.reviews
+    
+    override func viewWillAppear(_ animated: Bool) {
+        FavoriteDataManager.shared.loadFavoritePlaceId(userId: userId, completion: { data in
+            self.favoritePlaceId = data
+        })
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        FavoriteDataManager.shared.loadFavoritePlaceId(userId: userId, completion: { data in
+            self.favoritePlaceId = data
+            
+            DispatchQueue.main.async {
+                self.isFavorite = self.favoritePlaceId.first(where: { $0 == self.placeId}) ?? ""
+                
+                if let _ = self.placeId, !self.isFavorite.isEmpty {
+                    self.favoriteImageView.image = UIImage(systemName: "heart.fill")
+                    self.favoriteImageView.tintColor = .red
+                }
+            }
+        })
         setupData()
+        setupUI()
         setupAction()
         
         simulate()
@@ -80,6 +98,7 @@ class DetailViewController: UIViewController {
         reviewTextView.layer.cornerRadius = 10
         reviewTextView.layer.borderWidth = 1
         reviewTextView.layer.borderColor = UIColor.lightGray.cgColor
+        
     }
     
     private func setupScrollView() {
@@ -96,13 +115,6 @@ class DetailViewController: UIViewController {
             totalCommentLabel.text = String(place?.totalReviews ?? 0) + " Phản hồi"
             ownerLabel.text = "by " + (place?.ownerName ?? "")
             descriptionLabel.text = place?.description
-        }
-        
-        isFavorite = favoritePlaceId.first(where: { $0 == placeId}) ?? ""
-        
-        if let _ = placeId, !isFavorite.isEmpty {
-            favoriteImageView.image = UIImage(systemName: "heart.fill")
-            favoriteImageView.tintColor = .red
         }
     }
     
